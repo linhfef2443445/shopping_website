@@ -1,0 +1,22 @@
+tr.cart_item
+  td.product-name
+    = order.address
+  td.product-total
+    = order.phone_number
+  td.product-name
+    = order.full_name
+  td.product-name
+    = order.created_at.strftime("%b %d, %Y, %H:%M" ) 
+  td.product-name style="text-transform:uppercase"
+    strong
+      = order.status
+  td.product-name
+    - if (order.status == "Closed")
+        = link_to "#", class: "btn btn-danger" do
+          span style="color: #ffffff" Closed
+    -else
+        = link_to order_path(order), class: "btn btn-info", style:"margin-right: 10px" do
+          span style="color: #ffffff" Detail
+        - unless order.destroyable
+          = link_to order_path(order), method: :put, data: { confirm: "Are you sure?"}, class: "btn btn-danger" do
+            span style="color: #ffffff" Cancel

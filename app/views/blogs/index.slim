@@ -1,0 +1,15 @@
+.container
+  .row
+    .col-md-12
+      h1.page-title.margin-top Tyche Blogs
+  .row
+    #primary.content-area.col-md-8
+      main#main.site-main role="main" 
+        = render partial: "blog", collection: @blogs, as: :blog
+    aside#secondary.col-md-4.widget-area role="complementary" 
+      #recent-posts-2.widget_recent_entries
+        h5.widget-title
+          span Recent Posts
+        ul
+          = render partial: "recent_blog", collection: @recent_blogs, as: :recent_blog
+  = paginate @blogs

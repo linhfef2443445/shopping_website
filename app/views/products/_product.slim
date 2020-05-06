@@ -1,0 +1,16 @@
+li.product.last
+  = link_to (product.images.first.file_url if product.images.presence) || "/assets/user1.jpg", {class: "thumbs1"}
+    = image_tag (product.images.first.file_url(:thumb) if product.images.presence) || "/assets/user1.jpg", alt: "Edit Entry", class: "attachment-shop_catalog.size-shop_catalog"
+  h2.woocommerce-loop-product__title 
+    = link_to product.name, product
+  - if product.reviews.presence
+    .star-rating data-score=product.avg_rating
+  - else
+    .star-rating data-score=0
+  span.price
+    ins
+      span.woocommerce-Price-amount.amount
+        span.woocommerce-Price-currencySymbol
+          | $
+        = product.price
+  = button_to "Add to cart", carts_path(product_id: product.id), remote: true , class: "btn btn-danger"

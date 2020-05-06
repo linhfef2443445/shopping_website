@@ -1,0 +1,5 @@
+.shopping-cart
+  - if @cart.data.empty?
+    = render "cart_empty"
+  - else
+    = render "cart_detail", cart: @cart, product_list: @product_lists

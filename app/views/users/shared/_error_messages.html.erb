@@ -1,0 +1,12 @@
+<% if object.errors.any? %>
+  <% object.errors.full_messages.each do |message| %>
+    <script type="text/javascript">
+      toastr.error("<%= message %>")
+    </script>
+  <% end %>
+  <script type="text/javascript">
+   toastr.error("<%= I18n.t("errors.messages.not_saved",
+     count: object.errors.count,
+     resource: object.class.model_name.human.downcase)%>")
+  </script>
+<% end %>

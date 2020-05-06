@@ -1,0 +1,14 @@
+#reviews.woocommerce-Reviews
+  ol.commentlist
+    li#li-comment-43.review.even.thread-even.depth-1
+      #comment-43.comment_container
+        img.avatar.avatar-60.photo alt="" height="60" srcset=("https://secure.gravatar.com/avatar/17b83f527d414e8e82bf1f1fd226c791?s=120&d=mm&r=g 2x") width="60" 
+        .comment-text
+          .star-rating data-score=review.rate 
+          p.meta
+            strong.woocommerce-review__author =review.user.user_name
+            span.woocommerce-review__dash –
+            time.woocommerce-review__published-date =review.created_at.strftime("%b %d, %Y, %H:%M" )
+          .description
+            = simple_format(review.content)
+          br

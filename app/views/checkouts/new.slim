@@ -1,0 +1,28 @@
+- provide(:title, "Checkout")
+.content-fluid
+  .container
+    = form_for @order, url: checkouts_path, class: "needs-validation" do |f|
+      = render "users/shared/error_messages", object: f.object
+      .col-md-10.col-md-offset-1
+        .container style="margin-left: 30px"
+          h4.mb-4 style="margin-left: 15px" Billing details
+          br
+          .col-xs-4
+            = f.label :full_name, "Full name"
+            = f.text_field :full_name, autofocus: true, autocomplete: "full_name", class: "form-control",value: current_user.user_name, style:"width: 100%"
+            .invalid-feedback
+              | Valid first name is required.
+          .col-xs-5 style="margin-left: 40px"
+            = f.label :phone_number, "Phone"
+            = f.text_field :phone_number, autofocus: true, autocomplete: "phone_number", class: "form-control",value: current_user.phone_number, style:"width: 98%"
+            .invalid-feedback
+              | Valid phone is required.
+        br
+        .container-fluid style="margin-left: 60px"
+          = f.label :address, "Address"
+          = f.text_field :address, autofocus: true, autocomplete: "address", style:"width: 100%",value: current_user.address
+          .invalid-feedback
+            | Address must exist
+          = render "order_table" , product: @products, cart: @cart
+          = f.submit "Continue to checkout", class: "btn btn-primary btn-lg btn-block"
+        br

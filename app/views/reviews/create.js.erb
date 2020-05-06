@@ -1,0 +1,17 @@
+<% if @review.invalid? %>
+  toastr["error"]("Rate required");
+<%else%>
+  $("#review-list").html("<%= j render partial: "reviews/review", collection: @reviews, as: :review %>");
+  $("#review-form").html("<%= j render "reviews/form_review", review: @product.reviews.build %>")
+  $('.star-rating').raty({
+    path: '/assets/',
+    readOnly: true,
+    score: function() {
+          return $(this).attr('data-score');
+    }
+  });
+  $('#star-rating').raty({
+    path: '/assets/',
+    scoreName: 'review[rate]'
+  });
+<% end %>

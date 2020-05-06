@@ -1,0 +1,20 @@
+header#masthead.site-header[role="banner"]
+  .site-branding.container
+    .row
+      .col-sm-4.header-logo
+        = link_to root_path, class: "custom-logo-link", rel: "home"
+          img.custom-logo[width="150" height="70" src="https://colorlib.com/tyche/wp-content/uploads/sites/17/2017/06/logo.png" alt="Tyche Demo" sizes="(max-width: 150px) 100vw, 150px"]
+  nav#site-navigation.main-navigation[role="navigation"]
+    .container
+      .row
+        .col-md-12
+          ul#desktop-menu.sf-menu
+            li#menu-item-86.menu-item.menu-item-type-post_type.menu-item-object-page.menu-item-86[itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement"]
+              = link_to "Home", root_path, class: current_class(root_path)
+            li#menu-item-86.menu-item.menu-item-type-post_type.menu-item-object-page.menu-item-86[itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement"]
+              = link_to "Shop", shop_path, class: current_class(shop_path)
+            li#menu-item-84.menu-item.menu-item-type-post_type.menu-item-object-page.menu-item-84[itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement"]
+              = link_to "Blog", blogs_path, class: current_class(blogs_path)
+            li#menu-item-85.menu-item.menu-item-type-post_type.menu-item-object-page.menu-item-85[itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement"]
+              a[title="Contact" href="https://colorlib.com/tyche/contact/"]
+                | Contact

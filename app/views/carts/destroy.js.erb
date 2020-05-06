@@ -1,0 +1,4 @@
+$(".cart-text").html("<%= escape_javascript(render 'layouts/cart_text') %>")
+$(".shopping-cart").html("<%= escape_javascript(render 'carts/cart_detail', product_list: @product_lists, cart: @cart) %>")
+toastr["warning"]("Product deleted form cart!");
+<%= render "reset" %>

@@ -1,0 +1,55 @@
+.product-template-default.single.single-product.postid-19.wp-custom-logo.woocommerce.woocommerce-page.woocommerce-no-js
+  #page.site
+    .site-content
+      .container
+        .row
+          .col-md-12
+            nav.woocommerce-breadcrumb
+              a Home/Shop/#{@product.name}
+            .product
+              .images
+                figure.woocommerce-product-gallery__wrapper
+                  = link_to (@product.images.first.file_url if @product.images.presence) || "/assets/user1.jpg", {class: "thumbs"} do
+                    = image_tag (@product.images.first.file_url(:thumb_nail) if @product.images.presence) || "/assets/user1.jpg"
+                  br
+                  .row.tyche-product-slider-container
+                    .col-xs-12
+                      .owl-carousel.tyche-product-slider data-attr-elements="4"
+                        = render partial: "thumbs", collection: @thumbs, as: :thumb
+                      .tyche-product-slider-navigation.hidden-xs
+                        a.prev href="#" 
+                          i.fa.fa-angle-left
+                        a.next href="#" 
+                          i.fa.fa-angle-right
+              .summary
+                h1.product_title
+                  = @product.name
+                .woocommerce-product-details__short-description
+                  p
+                    = @product.description
+                p.price
+                  span.woocommerce-Price-amount
+                    span.woocommerce-Price-currencySymbol $
+                    = @product.price
+                h2 
+                = button_to "Add to cart", carts_path(product_id: @product.id), remote: true , class: "btn btn-danger"
+              .woocommerce-tabs
+                ul.tabs.wc-tabs 
+                  li#tab-title-reviews aria-controls="tab-reviews" role="tab" 
+                    a href="#tab-reviews"  Reviews
+                #tab-reviews.woocommerce-Tabs-panel--reviews.wc-tab
+                  #reviews
+                    #comments
+                      h2.woocommerce-Reviews-title
+                      #review-list
+                        - if @product.reviews.count > 0
+                            = render partial: "reviews/review", collection: @reviews, as: :review
+                        - else
+                          | There are no reviews yet   
+                      br       
+                    #review-form
+                      = render "reviews/form_review", review: @review
+              section.related.products
+                h2 Related products
+                ul.products.columns-4
+                  = render partial: "another", collection: @another_products, as: :another_products

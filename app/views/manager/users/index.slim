@@ -1,0 +1,30 @@
+.container-fluid
+  .card.shadow.mb-4
+    .card-header.py-3
+      h6.m-0.font-weight-bold.text-primary
+        | All User
+    .card-body
+      .table-responsive
+        #dataTable_wrapper.dataTables_wrapper.dt-bootstrap4
+          .row
+            .col-sm-12.col-md-6
+          .row
+            .col-sm-12
+              table#dataTable.table.table-bordered.dataTable[style="width: 100%;"]
+                thead
+                  tr[role="row"]
+                    th.sorting_asc[style="width: 15%;"]
+                      | Name
+                    th.sorting[style="width: 25%;"]
+                      | Email
+                    th.sorting[style="width: 25%;"]
+                      | Full Name
+                    th.sorting[style="width: 20%;"]
+                      | Phone Number
+                    th.sorting[style="width: 15%;"]
+                      | Address
+                tbody
+                  = render @users
+          .col-sm-12.col-md-7
+            #dataTable_paginate.dataTables_paginate.paging_simple_numbers
+              = paginate @users 

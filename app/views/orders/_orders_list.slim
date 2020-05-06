@@ -1,0 +1,8 @@
+tr.cart_item
+  td.product-name
+    = order.product.name
+    strong.product-quantity  × #{order.product.quantity} 
+  td.product-total
+    = order.created_at.strftime("%b %d, %Y, %H:%M" ) 
+  td.product-total
+    span.woocommerce-Price-amount.amount #{number_to_currency(order.product.price)} 

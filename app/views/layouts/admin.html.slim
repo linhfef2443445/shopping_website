@@ -1,0 +1,32 @@
+doctype html
+html
+  head
+    meta content=("text/html; charset=UTF-8") http-equiv="Content-Type" /
+    title Shopping Fashion
+    = csrf_meta_tags
+    = yield(:head)
+    = stylesheet_link_tag    "manager/application"
+    = javascript_include_tag "manager/application"
+  body
+    body#page-top
+      #wrapper
+        = render "manager/shared/sidebar"
+        #content-wrapper.d-flex.flex-column
+          #content
+            = render "manager/shared/topbar"
+            = flash_messages
+            = yield
+          = render "manager/shared/footer"
+      a.scroll-to-top.rounded href="#page-top" 
+        i.fas.fa-angle-up
+      #logoutModal.modal.fade aria-hidden="true" aria-labelledby="exampleModalLabel" role="dialog" tabindex="-1" 
+        .modal-dialog role="document" 
+          .modal-content
+            .modal-header
+              h5#exampleModalLabel.modal-title Ready to Leave?
+              button.close aria-label="Close" data-dismiss="modal" type="button" 
+                span aria-hidden="true"  ×
+            .modal-body Select "Logout" below if you are ready to end your current session.
+            .modal-footer
+              button.btn.btn-secondary data-dismiss="modal" type="button"  Cancel
+              a.btn.btn-primary href="login.html"  Logout

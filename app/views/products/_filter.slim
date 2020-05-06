@@ -1,0 +1,14 @@
+#woocommerce_price_filter-3.widget.woocommerce.widget_price_filter
+  h5.widget-title
+    span Filter by price
+    .form-row
+      = search_form_for(@filter, url: shop_path) do |f|
+        .form-group.col-md-6 style=("padding-left: 0px; margin-top: 30px; margin-bottom: 0px; width: 35%; margin-right: 0px;") 
+          = f.label :price, "Min", style: "font-size: 17px;"
+          = f.text_field :price_gteq, placeholder: "$", class: "form-control"
+        .form-group.col-md-6 style=("margin-top: 30px; width: 35%;margin-right: 0px;") 
+          = f.label :price, "Max", style: "font-size: 17px;"
+          = f.text_field :price_lteq, placeholder: "$", class: "form-control" do
+            i.far.fa-dollar-sign
+        .form-group.col-md-6 style=("padding-left: 0px;")
+          = f.submit "Add", class: "btn btn-default"
