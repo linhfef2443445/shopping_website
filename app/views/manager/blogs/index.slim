@@ -1,0 +1,19 @@
+.container-fluid
+  .card.shadow.mb-4
+    .card-header.py-3
+      h6.m-0.font-weight-bold.text-primary
+        | All Orders
+row
+  .col-sm-12
+    table.table.table-striped
+      thead
+        tr[role="row"]
+          th.sorting[style="width: 70px;"]
+            | Title
+          th.sorting[style="width: 150px;"]
+            | Content
+      tbody 
+        = render @blogs
+  .col-sm-12.col-md-7
+    #dataTable_paginate.dataTables_paginate.paging_simple_numbers
+       = paginate @blogs

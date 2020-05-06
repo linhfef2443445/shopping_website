@@ -1,0 +1,36 @@
+body
+  header.top-header-bar-container
+    .container
+      .row
+        .col-md-12
+          ul.top-header-bar
+            li.top-email
+              i.far.fa-envelope
+              |  shopfashion@gmail.com
+            li.top-cart
+              .cart-text
+                = render "layouts/cart_text"
+            li.top-account
+              - if user_signed_in?
+                  .dropdown
+                    button.dropbtn style="background: rgb(44, 47, 52) !important; border-color: #2c2f34 !important;" data-toggle="dropdown" 
+                      | #{current_user.user_name}
+                      span.caret
+                    .dropdown-content
+                      = link_to "Profile", user_path(current_user),class: "dropdown-item"
+                      = link_to " My order", orders_path(current_user)
+                      = link_to "Log out", destroy_user_session_path, method: :delete, data: {confirm: "Are you sure?"}, class: "dropdown-item" 
+              - else
+                  = link_to "Login", "#myModal", data: {toggle: "modal"}
+                  = render "users/shared/login_modal"
+                  | &emsp;
+                  = link_to "Signup", new_user_registration_path
+            li.top-search
+              = search_form_for(@search, url: shop_path) do |f|
+                label
+                  .search-field-top-bar
+                    = f.search_field :name_cont, placeholder:"Search ..."
+                    = button_tag(type: 'submit', class: "search-top-bar-submit", id: 'search-top-bar-submit') do
+                      span.fa.fa-search
+
+                    

@@ -1,0 +1,21 @@
+tr.odd role="row" 
+  td 
+    = order.id
+  td 
+    = order.full_name
+  td
+    = order.phone_number
+  td
+    = order.address
+  td
+    = order.created_at.strftime("%d/%m/%Y") 
+  td
+    = form_for order , url: manager_order_path(order), method: :patch do |f|
+      = f.hidden_field :order_id, value: order.id
+      .form-group
+      = f.select :status, Order.statuses.keys , {}, class: "form-control"
+      .form-group
+      = f.submit "Update" ,class: "btn btn-primary btn-sm"
+  td
+    = link_to "Detail", manager_order_path(order), class: "btn btn-info mr-5"
+    = link_to "Delete", manager_order_path(order), method: :delete, data: { confirm: "Are you sure?"}, class: "btn btn-danger"

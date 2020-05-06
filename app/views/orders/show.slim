@@ -1,0 +1,47 @@
+- provide(:title, "Order")
+.breadcrumb-area.gray-bg
+  .container
+    span
+      a
+        span style="color: black" itemprop="title"  Home/Shop/Checkout
+      .tyche-breadcrumbs
+        #primary.content-area.col-md-7.tyche-has-sidebar style=("margin-left: 0px;") 
+          h3.page-title Order details
+          #order_review.woocommerce-checkout-review-order
+            table.shop_table.woocommerce-checkout-review-order-table style="color: black"
+              thead
+                tr
+                  th.product-name Product
+                  th.product-total Time
+                  th.product-total Total
+              tbody
+              = render partial: "orders_list", collection: @order.order_items, as: :order
+              tfoot
+                tr
+                  th.product-name colspan="2" Total
+                  td.product-name
+                    strong
+                      span.woocommerce-Price-amount.amount= number_to_currency @order.subtotal
+        .col-md-4 style="color: black; margin-top: 0px;"
+          - if @order.time_left > 0
+            h3.page-title You can cancel your order in 2 hours
+            br
+            h6 
+            | Time left: 
+            span style="font-size: 20px; font-weight: bold" #{@order.time_left} minutes
+            br
+            br
+            = link_to order_path(@order), method: :put, data: { confirm: "Are you sure?"}, class: "btn btn-danger" do
+              span style="color: #ffffff" Cancel
+          - else
+            h4 style="margin-bottom: 10px; color: black" You can't cancel your order (Time has expired)
+            br
+            h6 
+            | Ordered time: 
+            span style="font-size: 20px; font-weight: bold" #{@order.created_at.strftime("%b %d, %Y, %H:%M")}
+      br
+    .col-md-7
+      .btn.btn-link
+        h5 style="color: #ffffff"
+          = link_to orders_path, class:"btn btn-info" do
+            span style="color: #ffffff" Back to orders

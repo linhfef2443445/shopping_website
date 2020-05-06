@@ -1,0 +1,35 @@
+.container
+  .row
+    #primary.content-area.col-md-12
+      main#main.site-main role="main" 
+        article#post-5.post-5.page.type-page.status-publish.hentry
+          .row
+            .col-md-12
+              header
+                h1.page-title.margin-top Cart
+          .woocommerce
+            .woocommerce-notices-wrapper
+            table.shop_table.shop_table_responsive.cart.woocommerce-cart-form__contents cellspacing="0" 
+              thead
+                tr
+                  th.product-remove  
+                  th.product-name Image
+                  th.product-name Product
+                  th.product-price Price
+                  th.product-subtotal Subtotal
+                  th.product-quantity Quantity
+                  th.product-subtotal Update
+              tbody
+                = render partial: "cart_row" , collection: product_list, as: :product
+            .cart-collaterals
+              .cart_totals
+                h2 Cart totals
+                table.shop_table.shop_table_responsive cellspacing="0" 
+                  tbody
+                    tr.order-total
+                      th Total
+                      td data-title="Total" 
+                        strong
+                          = number_to_currency cart.cart_total
+                .wc-proceed-to-checkout
+                  = link_to "Proceed to checkout", new_checkout_path, class: "checkout-button button alt wc-forward"

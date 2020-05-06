@@ -1,0 +1,33 @@
+- provide(:title, "Login")
+= form_for(resource, as: resource_name, url: session_path(resource_name), :html => {:class => "well form-horizontal"}) do |f|
+  center
+    h2
+      b Login
+    = render "users/shared/error_messages", object: f.object
+  br/
+  .form-group
+    = f.label :email, class: "col-md-4 control-label"
+    .col-md-4.inputGroupContainer
+      .input-group
+        span.input-group-addon
+          i.fas.fa-user-tie
+        = f.text_field :email, autofocus: true, autocomplete: "email", class: "form-control"
+  .form-group
+    = f.label :password, class: "col-md-4 control-label"
+    .col-md-4.inputGroupContainer
+      .input-group
+        span.input-group-addon
+          i.fas.fa-key
+        = f.password_field :password, autocomplete: "current-password", class: "form-control"
+  .form-group
+    .col-md-7.control-label
+      - if devise_mapping.rememberable?
+        = f.check_box :remember_me
+        | &ensp;
+        = f.label :remember_me
+        | &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;
+  .form-group
+    .col-md-7.control-label
+      = f.submit "Login", class: "btn btn-warning"
+      | &emsp;
+      = render "users/shared/links"

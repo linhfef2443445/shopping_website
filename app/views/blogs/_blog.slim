@@ -1,0 +1,26 @@
+article#post-79.tyche-blog-post.post-79.post.type-post.status-publish.format-standard.has-post-thumbnail.hentry.category-fashion.tag-fashion.tag-jackets.tag-trends
+  header.entry-header
+    .tyche-blog-image
+      = link_to (blog.images.file_url if blog.images.presence) || "/assets/user1.jpg", {class: "thumbs1"}
+        = image_tag (blog.images.file_url(:blog_thumb) if blog.images.presence) || "/assets/user1.jpg", alt: "Edit Entry", class: "attachment-shop_catalog.size-shop_catalog"
+    .tyche-blog-meta
+      .date
+        span.day = blog.created_at.strftime("%d")
+        span.month = blog.created_at.strftime("%b")
+      .title
+        h2.entry-title
+          a href="" rel="bookmark" = link_to blog.title, blog
+      .meta
+        ul.meta-list
+          li.post-author
+            icon.fa.fa-user
+            | By #{blog.admin.user_name}
+          li.post-comments
+            span.sep /
+            icon.fa.fa-comments
+              | 1 Comments
+  .entry-content
+    p
+      = blog.content.truncate_words(50)
+      br
+      a.more-link href="#"  Read More

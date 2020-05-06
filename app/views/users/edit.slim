@@ -1,0 +1,36 @@
+.form-name
+  h1.edit-profile Edit Profile
+  hr/
+  .row
+    .col-md-3
+    = form_for current_user , url: user_path(current_user) do |f|
+      = render "users/shared/error_messages", object: f.object
+      .col-md-6.col-md-offset-1
+        .form-group.col-md-12
+          = f.label "Full name"
+          .input-group.input-group-seamless
+            = f.text_field :full_name, class: "form-control"
+        .form-group.col-md-12
+          = f.label "Phone number"
+          .input-group.input-group-seamless
+            = f.text_field :phone_number, class: "form-control"
+        .form-group.col-md-12
+          = f.label "Email"
+          .input-group.input-group-seamless
+            = f.text_field :email, class: "form-control"
+        .form-group.col-md-12
+          = f.label "Address"
+          .input-group.input-group-seamless
+            = f.text_field :address, class: "form-control"
+        .form-group.col-md-12
+          = f.label "New_password"
+          .input-group.input-group-seamless
+            = f.password_field :password, class: "form-control"
+        .form-group.col-md-12
+          = f.label "Confirm_password"
+          .input-group.input-group-seamless
+            = f.password_field :password_confirmation, class: "form-control"
+        .form-group
+          .col-md-6.col-md-offset-3
+            = f.submit "Update", class: "btn-edit"
+  br

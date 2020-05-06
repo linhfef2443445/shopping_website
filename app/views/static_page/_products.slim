@@ -1,0 +1,18 @@
+.item
+  .tyche-product.primary
+    .tyche-product-image
+      = image_tag (product.images.first.file_url(:thumb) if product.images.presence) || "/assets/user1.jpg", size: "45", alt: "Edit Entry", class: "attachment-shop_catalog.size-shop_catalog"
+    .tyche-product-body
+      h3
+        a.woocommerce-LoopProduct-link.woocommerce-loop-product__link
+          = link_to product.name, product
+        - if product.reviews.presence
+          .star-rating data-score=product.avg_rating
+        - else
+          .star-rating data-score=0
+      span.price
+        span.woocommerce-Price-amount.amount
+          span.woocommerce-Price-currencySymbol
+            | $
+          = " #{product.price}"
+      = button_to "Add to cart", carts_path(product_id: product.id), remote: true , class: "btn btn-danger" 

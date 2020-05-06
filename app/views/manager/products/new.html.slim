@@ -1,0 +1,42 @@
+.form
+  = content_for :head do 
+    = stylesheet_link_tag "lib/templatemo-style.css", media: "all"
+  body
+    .container.tm-mt-big.tm-mb-big
+      .d-sm-flex.align-items-center.justify-content-between.mb-4
+        h1.mb-0.text-gray-800 Add Product
+      .row
+        .col-md-12
+          .tm-bg-primary-dark.tm-block.tm-block-h-auto
+            .row.tm-edit-product-row
+              .col-md-12
+                = form_for [:manager, @product], html: {multipart: true} do |f|
+                  = render "users/shared/error_messages", object: f.object
+                  .col-xl-6.col-lg-6.col-md-12
+                    tbody
+                      tr
+                        .form-group.mb-3
+                          label for="name"
+                            | Product Name
+                          = f.text_field :name, id: "form-control-name", class: "form-control"
+                        .form-group.mb-3
+                          label for="name" 
+                            | Description
+                          = f.text_area :description, id: "form-control-name", class: "form-control"
+                        .form-group.mb-3
+                          label for="name" 
+                            | Price
+                          = f.number_field :price, id: "form-control-name", class: "form-control"
+                        .form-group.mb-3
+                          label for="name" 
+                            | Quantity
+                          = f.number_field :quantity, id: "form-control-name", class: "form-control"
+                        .form-group.mb-3
+                          = f.submit "Add Product Now", id: "btn-product", remote: true, class: "btn btn-primary btn-block buton text-uppercase form-control"
+                  .col-xl-6.col-lg-6.col-md-12.mx-auto.mb-4
+                    = f.fields_for :images do |p| 
+                      .image-upload
+                          label for="file-input" 
+                            span.btn.btn-info UPLOAD IMAGE
+                          = p.file_field :file, name: "product[images][]", id: "file-input", multiple: true, class: "upload-image"
+                      #preview

@@ -1,0 +1,24 @@
+tr.woocommerce-cart-form__cart-item.cart_item
+  td.product-remove
+    = link_to "×", cart_path(product.id), { data: { confirm: "Are you sure you wish to delete the product '#{product.name}' from your cart?" }, method: :delete, remote: true, class: "remove" }
+  td.product-thumbnail
+    = link_to ""
+    = image_tag (product.images.first.file_url if product.images.presence) || "/assets/user1.jpg"
+  td.product-name data-title="Product" 
+    = link_to "#{product.name}", product
+  td.product-price data-title="Price" 
+    span.woocommerce-Price-amount.amount
+      span.woocommerce-Price-currencySymbol $
+      = product.price
+  td.product-subtotal data-title="Total" 
+    span.woocommerce-Price-amount.amount
+      = number_to_currency product.price * cart.data[product.id.to_s]
+  td.product-quantity data-title="Quantity" 
+    .quantity
+      .styled-number
+        = number_field_tag :quantity, cart.data[product.id.to_s], class: "form-control product-quantity", data: {product_id: product.id}, min: 1
+  td
+    = form_for product, url: cart_path(product.id), method: :patch, remote: true do |f|
+      = f.hidden_field :product_id, value: product.id
+      = f.hidden_field :quantity, value: cart.data[product.id.to_s], id: "product-quantity-hidden-#{product.id}", min: 1
+      = f.submit "Update", class: "remove"

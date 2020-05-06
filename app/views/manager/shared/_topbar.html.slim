@@ -1,0 +1,9 @@
+nav.navbar.navbar-expand.navbar-light.bg-white.topbar.mb-4.static-top.shadow
+  div.navbar-nav.ml-auto
+      .dropdown
+        button.btn.btn-primary.dropdown-toggle style="background-color: #7893e3 !important;" data-toggle="dropdown" type="button"
+          | Account
+        .dropdown-menu.dropdown-menu-right
+          - if admin_signed_in?
+            = link_to "#{current_admin.user_name}", current_admin.user_name, class: "dropdown-item"
+            = link_to "Log out", destroy_admin_session_path, method: :delete, class: "dropdown-item"

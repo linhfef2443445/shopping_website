@@ -1,0 +1,22 @@
+doctype html
+html
+  head
+    meta content=("text/html; charset=UTF-8") http-equiv="Content-Type" /
+    title
+      = yield(:title)
+      |  Techy
+    = csrf_meta_tags
+    = stylesheet_link_tag "application", media: "all"
+    = stylesheet_link_tag "https://colorlib.com/tyche/wp-content/plugins/woocommerce/assets/css/woocommerce-layout.css?ver=3.6.4", media: "all"
+    = stylesheet_link_tag "https://colorlib.com/tyche/wp-content/plugins/woocommerce/assets/css/woocommerce.css?ver=3.6.4", media: "all" 
+    = stylesheet_link_tag "//fonts.googleapis.com/css?family=Karla%3A400%2C700&amp;ver=5.2.1", media: "all"    
+    = stylesheet_link_tag "https://colorlib.com/tyche/wp-content/themes/tyche/assets/css/style.css?ver=5.2.1", media: "all" 
+    = javascript_include_tag "application"
+    = render "layouts/header"
+    = render "layouts/headers"
+  body
+    .container-fluid
+      = flash_messages
+      = yield
+    = render "layouts/footers"
+    = render "layouts/footer"

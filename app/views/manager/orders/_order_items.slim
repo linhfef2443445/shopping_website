@@ -1,0 +1,8 @@
+tr.cart_item
+  td.product-name
+    h4= order_items.product.name
+    h6
+      | Qty: #{order_items.quantity}
+  td.product-total
+    span.woocommerce-Price-amount.amount
+      = number_to_currency(order_items.product.price)

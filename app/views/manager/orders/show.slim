@@ -1,0 +1,14 @@
+.col-md-12.col-md-offset-3
+  table.shop_table.woocommerce-checkout-review-order-table
+    thead.order-product-total
+      tr.Product-Total
+        th.product-name Product
+        th.product-total Total
+      tbody.table-order 
+        = render partial: "order_items", collection: @order.order_items, as: :order_items
+    tr.order-total
+      th.total-price Total
+      td.subtotal
+        strong
+          span.woocommerce-Price-amount.amount
+            = number_to_currency(@order.subtotal)

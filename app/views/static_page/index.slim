@@ -1,0 +1,56 @@
+- provide(:title, "Home")
+= render "banner"
+doctype html
+html lang="en-US" 
+  head
+    title Home - Tyche Demo
+  body.home.page-template-default.page.page-id-2.wp-custom-logo.woocommerce-no-js
+    .site-content
+      section.content-area-3
+        .container
+          .row
+            .col-xs-12
+              #tyche_products-9.tyche-products.orange.widget.widget_tyche_products
+                h3.widget-title
+                  span LASTEST PRODUCTS
+                .row.tyche-product-slider-container
+                  .tyche-product-slider-navigation.hidden-xs
+                    a.prev href="#" 
+                      i.fa.fa-angle-left
+                    a.next href="#" 
+                      i.fa.fa-angle-right
+                  .col-xs-12
+                    .owl-carousel.tyche-product-slider data-attr-elements="4" 
+                      = render partial: "products" , collection: @products, as: :product
+      section.content-area-3
+        .container
+          .row
+            .col-xs-12
+              #tyche_products-9.tyche-products.orange.widget.widget_tyche_products
+                h3.widget-title
+                  span TOP REVIEW PRODUCTS
+                .row.tyche-product-slider-container
+                  .tyche-product-slider-navigation.hidden-xs
+                    a.prev href="#" 
+                      i.fa.fa-angle-left
+                    a.next href="#" 
+                      i.fa.fa-angle-right
+                  .col-xs-12
+                    .owl-carousel.tyche-product-slider data-attr-elements="4"
+                      = render partial: "products" , collection: @top_products, as: :product 
+      section.content-area-5
+        .container
+          .row
+            .col-xs-12
+              #tyche_products-10.tyche-products.light_blue.widget.widget_tyche_products
+                h3.widget-title
+                  span RANDOM PRODUCTS
+                .row.tyche-product-slider-container
+                  .tyche-product-slider-navigation.hidden-xs
+                    a.prev href="#" 
+                      i.fa.fa-angle-left
+                    a.next href="#" 
+                      i.fa.fa-angle-right
+                  .col-xs-12
+                    .owl-carousel.tyche-product-slider data-attr-elements="4"
+                      = render partial: "products" , collection: @random_products, as: :product

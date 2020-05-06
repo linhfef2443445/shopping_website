@@ -1,0 +1,32 @@
+- provide(:title, "Shop")
+div.archive.post-type-archive.post-type-archive-product.wp-custom-logo.woocommerce.woocommerce-page.woocommerce-js.hfeed
+  .container
+    .row
+      .col-md-12
+        nav.woocommerce-breadcrumb
+         =link_to "Home/Shop","#"
+    .row
+      .col-md-4
+        = render "filter.slim"
+        #woocommerce_top_rated_products-3.widget.woocommerce.widget_top_rated_products
+          h5.widget-title style="margin-bottom: 20px;"
+          br
+            h5 
+              span Top rated products
+          ul.product_list_widget style="width: 133px;"
+            = render partial: "side_bar", collection: @top_products, as: :product
+      .col-md-8.tyche-has-sidebar style= "margin-left: 0px"
+        h1.woocommerce-products-header__title.page-title
+          | Shop
+        .woocommerce-notices-wrapper
+        ul.products.columns-3
+          - if @products_filter.presence
+            = render @products_filter
+            .col-md-12 style="text-align: center"
+              = paginate @products_filter
+          - elsif @products_search.presence
+            = render @products_search
+            .col-md-12 style="text-align: center"
+              = paginate @products_search
+          - else
+            | Sorry no product match, try again

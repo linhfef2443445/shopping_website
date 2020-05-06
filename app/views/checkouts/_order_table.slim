@@ -1,0 +1,16 @@
+br
+h4 List product
+table.shop_table.woocommerce-checkout-review-order-table style="position: unset; width: 100%"
+  thead
+    tr
+      th.product-name Product
+      th.product-total Subtotal
+  tbody
+    = render partial: "order_row" , collection: product, as: :product
+  tfoot
+    tr.order-total
+      th Total
+      td
+        strong
+          span.woocommerce-Price-amount.amount= number_to_currency cart.cart_total
+br

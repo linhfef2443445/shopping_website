@@ -1,0 +1,30 @@
+.container
+  .jumbotron
+    .row
+      .col-md-4.col-xs-12.col-sm-6.col-lg-4
+        = image_tag("download.png")
+      .col-md-8.col-xs-12.col-sm-6.col-lg-8 
+        .container style=("border-bottom:1px solid black") 
+          h2.user-name
+            = current_user.user_name
+        hr
+        ul.container.details
+          li
+            a.full-name
+              i.fas.fa-user &ensp;
+              = current_user.full_name
+          li
+            a.full-name
+              i.fa.fa-envelope &ensp;
+              = current_user.email
+          li
+            a.full-name
+              i.fa.fa-phone-square &ensp;
+              = current_user.phone_number
+          li
+            a.full-name
+              i.fa.fa-home &ensp;
+              = current_user.address
+        ul.change_profile
+          | Click
+          | #{link_to "Here", edit_user_path(current_user)}to change profile

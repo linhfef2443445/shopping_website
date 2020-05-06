@@ -1,0 +1,3 @@
+$("#comment-list").html("<%= j render partial: "comments/comment", collection: @comments, as: :comment %>");
+$("#comment-form").html("<%= j render "comments/form_comment", comment: @blog.comments.build %>")
+$(".comments-title").html("<%= @blog.comments.count %> thought on : <%= @blog.title %>")

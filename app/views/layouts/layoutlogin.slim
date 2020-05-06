@@ -1,0 +1,12 @@
+doctype html
+html
+  head
+    title Shop Fashion
+    = csrf_meta_tags 
+    meta charset="utf-8" /
+    meta content="IE=edge" http-equiv="X-UA-Compatible" /
+    meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport" /
+    = stylesheet_link_tag "manager/application", media: "all"
+    = javascript_include_tag "manager/application"
+  body
+    = yield

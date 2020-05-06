@@ -1,0 +1,14 @@
+.container
+  .row
+    #primary.content-area.col-md-12
+      main#main.site-main role="main" 
+        article#post-5.post-5.page.type-page.status-publish.hentry
+          .row
+            .col-md-12
+              header
+                h1.page-title.margin-top Cart
+          .woocommerce
+            .woocommerce-notices-wrapper
+            p.cart-empty Your cart is currently empty.
+            p.return-to-shop
+              = link_to "Return to shop", root_path, class: "button wc-backward"
