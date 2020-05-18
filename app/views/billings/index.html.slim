@@ -1,0 +1,4 @@
+- if current_user.orders.last.status == "Paid"
+  = render "paid"
+- else
+  = render "bill"

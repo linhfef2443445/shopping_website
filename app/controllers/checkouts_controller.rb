@@ -12,7 +12,7 @@ class CheckoutsController < ApplicationController
     if @order.save
       flash[:success] = "Order created complete!"
       cart.data.clear
-      redirect_to orders_path
+      redirect_to billings_path
     else
       render "new"
     end

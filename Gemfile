@@ -7,7 +7,7 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-gem "rails", "~> 5.1.7"
+gem "rails", "~> 5.2.3"
 gem "dotenv-rails"
 gem "devise"
 gem "toastr-rails"
@@ -34,6 +34,8 @@ gem "magnific-popup-rails", "~> 1.1.0"
 gem "config"
 gem "faker"
 gem "bootstrap"
+gem "stripe-rails"
+gem "bootsnap", ">= 1.1.0", require: false
 group :development, :test do
   gem "pry-rails"
   gem "rspec-rails", "~> 3.8"

@@ -13,7 +13,7 @@ class OrdersController < ApplicationController
 
   def update
     @order = Order.find(params[:id])
-    @order.update(status: 2)
+    @order.update(status: 3)
     redirect_to orders_path, succes: "Order Canceled"
-  end
+  end                                                                             
 end
