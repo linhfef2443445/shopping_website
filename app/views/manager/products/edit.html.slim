@@ -41,12 +41,13 @@ body
                       .form-group.mb-3
                         = f.submit "Update Product Now",id: "btn-product", class: "btn btn-primary btn-block text-uppercase form-control"
                 .col-xl-6.col-lg-6.col-md-12.mx-auto.mb-4
+                  #preview-change
                   = f.fields_for :images do |p| 
                     .image-upload#photo-name
-                      = image_tag p.object.file_url
+                      = image_tag p.object.file_url, class:"image-center"
                       = p.hidden_field :id
                       = p.hidden_field :file_cache, id: "photo-name"
                       br
                       label for="file-input-#{p.object.id}" 
-                        span CHANGE IMAGE
-                      = p.file_field :file, id: "file-input-#{p.object.id}"
+                        span.btn.btn-warning CHANGE IMAGE
+                      = p.file_field :file, id: "file-input-#{p.object.id}", class: "upload-edit-image"

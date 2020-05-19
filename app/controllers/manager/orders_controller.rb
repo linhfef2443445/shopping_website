@@ -3,6 +3,7 @@
 module Manager
   class OrdersController < Manager::BaseController
     before_action :load_order, only: %i[show edit update destroy]
+    load_and_authorize_resource
 
     def index
       @orders = Order.page(params[:page]).order(created_at: :desc)

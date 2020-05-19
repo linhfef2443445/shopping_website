@@ -1,0 +1,12 @@
+tr.odd role="row" 
+  td 
+    = review.user.user_name
+  td
+    = review.product.name
+  td 
+    = review.content
+  td
+    = review.rate
+  td
+    = link_to manager_review_path(review), method: :delete, class: "btn btn-danger", data: {confirm: "Are You Sure ?"} do
+        span Delete

@@ -1,0 +1,10 @@
+tr.odd role="row" 
+  td 
+    = comment.user.user_name
+  td
+    = comment.blog_id
+  td 
+    = comment.content
+  td
+    = link_to manager_comment_path(comment), method: :delete, class: "btn btn-danger", data: {confirm: "Are You Sure ?"} do
+        span Delete

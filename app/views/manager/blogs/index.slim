@@ -2,7 +2,15 @@
   .card.shadow.mb-4
     .card-header.py-3
       h6.m-0.font-weight-bold.text-primary
-        | All Orders
+        | All Blogs
+    .card-body
+      .table
+        #dataTable_wrapper.dataTables_wrapper.dt-bootstrap4
+          .row
+            .col-sm-12.col-md-6
+              #dataTable_length.dataTables_length
+                = link_to new_manager_blog_path, class: "btn btn-success" do
+                  | Add New Blog
 row
   .col-sm-12
     table.table.table-striped
@@ -10,8 +18,14 @@ row
         tr[role="row"]
           th.sorting[style="width: 70px;"]
             | Title
-          th.sorting[style="width: 150px;"]
+          th.sorting[style="width: 100px;"]
+            | Description
+          th.sorting[style="width: 100px;"]
             | Content
+          th.sorting[style="width: 70px;"]
+            | Image
+          th.sorting[style="width: 80px;"]
+            | Action  
       tbody 
         = render @blogs
   .col-sm-12.col-md-7

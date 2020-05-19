@@ -4,6 +4,11 @@ admin = Admin.create!(user_name: "BinhPham",
                      password: "123456",
                      role: "admin")
 
+contributor = Admin.create!(user_name: "BinhPham",
+                     email: "ninh@gmail.com",
+                     password: "123456",
+                     role: "contributor")
+
 user = User.create!(user_name: "NinhPham",
                     email: "ninhpham@gmail.com",
                     password:    "123456",
@@ -28,9 +33,9 @@ end
 
 15.times do |n|
   lname  = Faker::Name.name
-  quantity = Faker::Number.between(1, 10)
-  price = Faker::Number.between(10, 200)
-  description = Faker::Lorem.sentence(10)
+  quantity = Faker::Number.between(from: 1, to: 10)
+  price = Faker::Number.between(from: 10, to: 200)
+  description = Faker::Lorem.sentence(word_count: 10)
   admin = Admin.first
   Product.create!(name:  lname,
                   quantity: quantity,
@@ -54,14 +59,15 @@ end
 
 orders = Order.order(:created_at).take(6)
 5.times do |n|
-  quantity = Faker::Number.between(1, 10)
-  productid = Faker::Number.between(1, 15)
+  quantity = Faker::Number.between(from: 1, to: 10)
+  productid = Faker::Number.between(from: 1, to: 15)
   orders.each { |order| order.order_items.create!(quantity: quantity, product_id: productid) } 
 end
 
 admins = Admin.all
 30.times do |n|
-  title = Faker::Lorem.sentence(10)
-  content = Faker::Lorem.sentence(100)
-  admins.each {|admin| admin.blogs.create!(title: title, content: content)}
+  title = Faker::Lorem.sentence(word_count:10)
+  content = Faker::Lorem.sentence(word_count:100)
+  description = Faker::Lorem.sentence(word_count: 10)
+  admins.each {|admin| admin.blogs.create!(title: title, content: content, description: description)}
 end

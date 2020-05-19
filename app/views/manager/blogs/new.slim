@@ -1,0 +1,13 @@
+.container.tm-mt-big.tm-mb-big
+  .d-sm-flex.align-items-center.justify-content-between.mb-4
+    h1.mb-0.text-gray-800 Add Blog
+  .col-md-16
+    = form_for [:manager, @blog] do |f|
+      = f.label :title
+      = f.text_field :title
+      = f.label :description
+      = f.text_field :description
+      = f.label :content
+      = f.cktext_area :content, rows: 10, id: "cke_chrome"
+      = f.file_field :image
+      = f.submit "Create Blog", class: "btn btn-block btn-sm btn-success"

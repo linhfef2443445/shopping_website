@@ -503,3 +503,30 @@ li a.active {
 .main-slider .main-slider-previous i, .main-slider .main-slider-next i {
   visibility: hidden
 }
+
+.col-md-14 {
+  margin-left: 100px;
+  margin-right: 100px;
+}
+
+.btn.btn-block.btn-sm.btn-success {
+  background: #2196F3;
+}
+
+.cke_chrome {
+  border: 1.25px solid #d1d1d1 !important;
+}
+
+input[type="file"] {
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
+input#blog_description {
+  height: 100px;
+}
+
+#edit-blog {
+  text-align: center;
+  vertical-align: middle;
+}

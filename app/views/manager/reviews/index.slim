@@ -1,0 +1,25 @@
+.container-fluid
+  .card.shadow.mb-4
+    .card-header.py-3
+      h6.m-0.font-weight-bold.text-primary
+        | All Review
+row
+  .col-sm-12
+    table.table.table-striped
+      thead
+        tr[role="row"]
+          th.sorting_asc[style="width: 40px;"]
+            | User name
+          th.sorting_asc[style="width: 40px;"]
+            | Product 
+          th.sorting[style="width: 90px;"]
+            | Content
+          th.sorting[style="width: 70px;"]
+            | Rate
+          th.sorting[style="width: 60px;"]
+            | Action
+      tbody 
+        = render @reviews
+  .col-sm-12.col-md-7
+    #dataTable_paginate.dataTables_paginate.paging_simple_numbers
+      = paginate @reviews
