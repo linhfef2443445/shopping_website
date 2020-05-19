@@ -1,5 +1,14 @@
-tr.odd role="row" 
+tr
   td
     = blog.title
+  td
+    = blog.description
   td 
-    = blog.content
+    = raw blog.content
+  td 
+    = image_tag (blog.image.url if blog.image.presence) || "/assets/user.png", size: "50", alt: "Edit Entry"
+  td#edit-blog
+    = link_to edit_manager_blog_path(blog), class: "btn btn-info mr-5" do
+      span  Edit 
+    = link_to manager_blog_path(blog), method: :delete, class: "btn btn-danger", data: {confirm: "Are You Sure ?"} do
+      span Delete

@@ -36,6 +36,8 @@ gem "faker"
 gem "bootstrap"
 gem "stripe-rails"
 gem "bootsnap", ">= 1.1.0", require: false
+gem "ckeditor", github: 'galetahub/ckeditor'
+gem "cancancan", "~> 2.0"
 group :development, :test do
   gem "pry-rails"
   gem "rspec-rails", "~> 3.8"
