@@ -9,6 +9,9 @@ tr.cart_item
     = order.created_at.strftime("%b %d, %Y, %H:%M" ) 
   td.product-name style="text-transform:uppercase"
     strong
+    - if order.status != "Paid" && order.time_left < 0
+      | Canceled
+    - else
       = order.status
   td.product-name
     - if (order.status == "Closed")

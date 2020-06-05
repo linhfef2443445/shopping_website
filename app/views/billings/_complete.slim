@@ -1,26 +1,19 @@
-#index-city.success
-  .row
-    h2#you-success
-      = t ".success"
-    .ticket__content#successful
-      .text-center
-        p#name_email
-          | Name
-          = @order.full_name
-          br
-          | Email
-          = @order.user.email
-      br
-      .col-lg-3
-        table
-          tr
-            td |Product 
-            td 
-              - @order.order_items.each do |ot|
-                span = ot.product.name 
-            end
-          tr
-            td = t(".total")  
-            td = number_to_currency(@order.subtotal)
-  = form_tag payment_path, method: :post do
+.container
+  br
+  h4 List ordered product
+  table.shop_table.woocommerce-checkout-review-order-table style="position: unset; width: 100%"
+    thead
+      tr
+        th.product-name Product
+        th.product-total Price
+    tbody
+      = render partial: "ordered_row", collection: order.order_items, as: :item
+    tfoot
+      tr.order-total
+        th Total
+        td
+          strong
+            span.woocommerce-Price-amount.amount= number_to_currency order.subtotal
+  span If you agree to pay this order, press the pay button to pay
+  = form_tag payment_path(order_id: @order.id), method: :post do
     = submit_tag "Pay", class: "btn btn-primary", id:"success-payment"

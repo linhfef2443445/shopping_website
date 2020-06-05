@@ -33,7 +33,7 @@ Rails.application.routes.draw do
   post "/card" => "billings#create_card", as: :create_payment_method
   get "/success" => "billings#success", as: :success
   post "/payment" => "billings#payment", as: :payment
-  post "/payment" => "billings#payment_from_order", as: :payment_order
+  post "/pay_order" => "orders#payment_from_order", as: :payment_order
   
   resources :products, only: [:show]
   resources :reviews, only: %i[create new show index]
@@ -42,5 +42,5 @@ Rails.application.routes.draw do
   resources :orders, only: %i[update show index]
   resources :blogs
   resources :comments, only: %i[create new show index]
-  resources :billings, only: [:index]
+  resources :billings
 end

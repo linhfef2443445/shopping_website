@@ -1,4 +1,4 @@
-- if current_user.orders.last.status == "Paid"
+- if @order.status == "Paid"
   = render "paid"
 - else
-  = render "complete"
+  = render "complete", order: @order

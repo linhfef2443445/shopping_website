@@ -1,11 +1,14 @@
 class BillingsController < ApplicationController
   before_action :authenticate_user!
+  rescue_from Stripe::CardError, with: :catch_exception
   def index; end
 
-  def new_card
-    respond_to do |format|
-      format.js
-    end
+  def new
+  end
+
+  def create
+    StripeChargesServices.new(charges_params, current_user).call
+    redirect_to orders_path
   end
 
   def create_card 
@@ -28,50 +31,34 @@ class BillingsController < ApplicationController
       customer.source = card_token
       #we're attaching the card to the stripe customer
       customer.save
-
-      format.html { redirect_to success_path }
+      format.html { redirect_to success_path(order_id: params[:order_id]) }
     end
   end
 
   def success
-    @order = current_user.orders.last
-    @order_items = @order.order_items
+    @order = current_order
   end
 
   def payment
     customer = Stripe::Customer.new current_user.stripe_id
     @payment = Stripe::Charge.create customer: customer.id,
-                                     amount: current_user.orders.last.subtotal*100,
+                                     amount: current_order.subtotal*100,
                                      description: "Payments",
                                      currency: "usd"
     if @payment.save
-      current_user.orders.last.status = "Paid"
+      current_order.update_attributes(status: "Paid")
     end
-    flash[:success] = t ".success"
-    redirect_to orders_path
-  end
-
-  def payment_from_order
-    customer = Stripe::Customer.new current_user.stripe_id
-    @payment = Stripe::Charge.create customer: customer.id,
-                                     amount: current_user.orders.last.subtotal*100,
-                                     description: "Payments",
-                                     currency: "usd"
-    if @payment.save
-      current_user.orders.last.status = "Paid"
-    end
-    flash[:success] = t ".success"
+    flash[:success] = "Successful payment"
     redirect_to orders_path
   end
 
   private
 
-  def payment_params customer, order
-    {
-      customer: customer.id,
-      amount: order.subtotal / Settings.exchange,
-      description: t(".payments"),
-      currency: :usd
-    }
+  def current_order
+    if params[:order_id] == nil
+      current_order = current_user.orders.last
+    else
+      current_order = Order.find(params[:order_id])
+    end
   end
 end

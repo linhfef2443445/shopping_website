@@ -1,0 +1,10 @@
+tr.cart_item
+  td.product-name
+    = item.product.name
+    |  
+    strong.product-quantity
+      | × #{item.quantity}
+  td.product-total
+    span.woocommerce-Price-amount.amount
+      span.woocommerce-Price-currencySymbol $
+      = item.product.price * item.quantity

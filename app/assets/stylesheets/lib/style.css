@@ -4398,7 +4398,7 @@ a:hover, a:active {
   font-weight: 700;
 }
 .site-header .custom-logo-link img {
-  width: 165px;
+  width: 200px;
   height: 70px;
 }
 .site-header .site-title {
@@ -5029,7 +5029,7 @@ a:hover, a:active {
 .woocommerce ul.products .star-rating {
   margin: 0 auto;
   margin-bottom: 15px;
-  font-size: 13px;
+  font-size: 15px;
 }
 .woocommerce ul.products .star-rating span:before {
   color: #ffab1a;
@@ -5878,7 +5878,7 @@ a:hover, a:active {
   display: block;
   margin: 15px auto;
   float: none;
-  font-size: 13px;
+  font-size: 15px;
 }
 .star-rating:before {
   content: "\73\73\73\73\73";

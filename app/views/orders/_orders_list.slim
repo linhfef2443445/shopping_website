@@ -1,7 +1,7 @@
 tr.cart_item
   td.product-name
     = order.product.name
-    strong.product-quantity  × #{order.product.quantity} 
+    strong.product-quantity  × #{order.quantity} 
   td.product-total
     = order.created_at.strftime("%b %d, %Y, %H:%M" ) 
   td.product-total

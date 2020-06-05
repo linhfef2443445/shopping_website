@@ -5024,7 +5024,7 @@ a:active {
 }
 
 .site-header .custom-logo-link img {
-    width: 165px;
+    width: 200px !important;
     height: 70px;
 }
 
