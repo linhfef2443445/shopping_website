@@ -19,6 +19,7 @@ Rails.application.routes.draw do
     resources :blogs
     resources :reviews
     resources :comments
+    resources :categories
   end
 
   resources :users, only: %i[show edit update]
@@ -43,4 +44,6 @@ Rails.application.routes.draw do
   resources :blogs
   resources :comments, only: %i[create new show index]
   resources :billings
+  resources :categories, only: %i[index show]
+  resources :contacts, only: %i[index]
 end

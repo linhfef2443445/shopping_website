@@ -31,8 +31,14 @@
                   span.woocommerce-Price-amount
                     span.woocommerce-Price-currencySymbol $
                     = @product.price
-                h2 
-                = button_to "Add to cart", carts_path(product_id: @product.id), remote: true , class: "btn btn-danger"
+                = select_tag :size, options_for_select(Product.sizes), class: "product-size", :onchange => "myFunction(this)", data: {product_id: @product.id}
+                .product_meta
+                  .posted_in
+                  span Category: 
+                  = link_to "#{@product.category.name}", category_path(@product.category.id)
+                h2
+                / = button_to "Add to cart", carts_path(product_id: @product.id), remote: true , class: "btn btn-danger action_link", id: "action_link"
+                = button_tag "Add to cart", remote: true , class: "btn btn-danger action_link", id: "action_link"
               .woocommerce-tabs
                 ul.tabs.wc-tabs 
                   li#tab-title-reviews aria-controls="tab-reviews" role="tab" 

@@ -15,3 +15,7 @@
 //= require bootstrap-sprockets
 //= require toastr
 //= require manager/preview_images
+//= require lib/jquery.dataTables.min
+//= require manager/datatable
+//= require chartkick
+//= require Chart.bundle

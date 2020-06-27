@@ -6,8 +6,8 @@ class CheckoutsController < ApplicationController
 
   def create
     @order = current_user.orders.build(checkout_params)
-    cart.data.each do |product_id, quantity|
-      @order.order_items.build(product_id: product_id, quantity: quantity)
+    cart.data.each do |product_id, att|
+      @order.order_items.build(product_id: product_id, quantity: att.first)
     end
     if @order.save
       flash[:success] = "Order created complete!"
@@ -26,8 +26,10 @@ class CheckoutsController < ApplicationController
   private
 
   def check_cart
-    redirect_to carts_path if cart.data.empty?
-    #flash[:error] = "No order items!"
+    if cart.data.empty?
+      redirect_to carts_path 
+      flash[:error] = "No order items!"
+    end
   end
 
   def checkout_params

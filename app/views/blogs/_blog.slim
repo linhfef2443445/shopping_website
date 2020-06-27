@@ -2,7 +2,7 @@ article#post-79.tyche-blog-post.post-79.post.type-post.status-publish.format-sta
   header.entry-header
     .tyche-blog-image
       = link_to (blog.image.url if blog.image.presence) || "/assets/user1.jpg", {class: "thumbs1"}
-        = image_tag (blog.image.url(:blog_thumb) if blog.image.presence) || "/assets/user1.jpg", alt: "Edit Entry", class: "attachment-shop_catalog.size-shop_catalog"
+        = image_tag (blog.image.url(:blog_thumb) if blog.image.presence) || "/assets/user1.jpg", alt: "Photo", class: "attachment-shop_catalog.size-shop_catalog"
     .tyche-blog-meta
       .date
         span.day = blog.created_at.strftime("%d")
@@ -18,9 +18,10 @@ article#post-79.tyche-blog-post.post-79.post.type-post.status-publish.format-sta
           li.post-comments
             span.sep /
             icon.fa.fa-comments
-              | 1 Comments
+            | #{blog.comments.count} Comments
   .entry-content
     p
-      = blog.content.truncate_words(50)
+      = raw(blog.content.truncate_words(50))
       br
-      a.more-link href="#"  Read More
+      = link_to "Read More", blog, class:"meta more-link"
+br

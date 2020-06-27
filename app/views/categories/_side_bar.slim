@@ -1,0 +1,13 @@
+br
+li
+  = link_to (product.images.first.file_url if product.images.presence) || "/assets/user1.jpg", {class: "thumbs1"}
+    = image_tag (product.images.first.file_url(:thumb) if product.images.presence) || "/assets/user1.jpg", alt: "Edit Entry", class: "attachment-shop_catalog.size-shop_catalog"
+    span.product-title 
+      = link_to product.name, product
+  ins
+    span.woocommerce-Price-amount.amount #{number_to_currency(product.price)}
+- if product.reviews.presence
+  .star-rating style="width: 20px !important; height: 15px !important; display: contents;" data-score=product.avg_rating
+- else
+  .star-rating style="width: 20px !important; height: 15px !important; display: contents;"data-score=0
+br

@@ -1,0 +1,8 @@
+.container.tm-mt-big.tm-mb-big
+  .d-sm-flex.align-items-center.justify-content-between.mb-4
+    h1.mb-0.text-gray-800 Edit category
+  .col-md-16
+    = form_for [:manager, @category] do |f|
+      = f.label :name
+      = f.text_field :name
+      = f.submit "Edit category", class: "btn btn-block btn-sm btn-success"

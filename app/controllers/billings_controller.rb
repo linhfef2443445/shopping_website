@@ -47,6 +47,9 @@ class BillingsController < ApplicationController
                                      currency: "usd"
     if @payment.save
       current_order.update_attributes(status: "Paid")
+      @user = current_user
+      @order = current_order
+      OrderMailer.order_mail(@order, @user).deliver_now if current_user.present?
     end
     flash[:success] = "Successful payment"
     redirect_to orders_path

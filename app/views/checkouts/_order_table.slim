@@ -4,13 +4,14 @@ table.shop_table.woocommerce-checkout-review-order-table style="position: unset;
   thead
     tr
       th.product-name Product
+      th.product-name Size
       th.product-total Subtotal
   tbody
     = render partial: "order_row" , collection: product, as: :product
   tfoot
     tr.order-total
-      th Total
-      td
+      th.product-name colspan="2" Total
+      td.product-name 
         strong
           span.woocommerce-Price-amount.amount= number_to_currency cart.cart_total
 br

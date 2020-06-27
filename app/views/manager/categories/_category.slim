@@ -1,0 +1,10 @@
+tr.odd role="row" 
+  td 
+    = category.id
+  td
+    = category.name
+  td
+    = link_to edit_manager_category_path(category), class: "btn btn-info mr-5" do
+      span  Edit 
+    = link_to manager_category_path(category), method: :delete, class: "btn btn-danger", data: {confirm: "Are You Sure ?"} do
+      span Delete

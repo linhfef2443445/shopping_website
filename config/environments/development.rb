@@ -36,7 +36,22 @@ Rails.application.configure do
   config.action_mailer.perform_caching = false
 
   # Print deprecation notices to the Rails logger.
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.delivery_method = :test
   config.active_support.deprecation = :log
+  config.active_job.queue_adapter = :sidekiq
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    address: "smtp.gmail.com",
+    port: 587,
+    domain: "asciicasts.com",
+    authentication: "plain",
+    enable_starttls_auto: true,
+    user_name: ENV["user_name"],
+    password: ENV["password"],
+  }
+  config.action_mailer.default_url_options = { host: 'localhost:3000' }
 
   # Raise an error on page load if there are pending migrations.
   config.active_record.migration_error = :page_load

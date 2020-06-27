@@ -1,0 +1,23 @@
+.container-fluid
+  .card.shadow.mb-4
+    .card-header.py-3
+      .row
+        .col-sm-12.col-md-6
+          #dataTable_length.dataTables_length
+            = link_to new_manager_category_path, class: "btn btn-success" do
+              | Add New Category
+row
+  .col-md-6.offset-md-3
+    table#dataTable.table.table-bordered.table-striped
+      thead
+        tr[role="row"]
+          th[style="width: 40px;"]
+            | No
+          th
+            | Name 
+          th
+            | Action  
+      tbody 
+        = render @categories
+  .col-sm-12.col-md-7
+    #dataTable_paginate.dataTables_paginate.paging_simple_numbers

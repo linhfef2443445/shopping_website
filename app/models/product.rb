@@ -2,7 +2,9 @@
 
 class Product < ApplicationRecord
   extend FriendlyId
+  enum size: %i[S M L]
   belongs_to :admin
+  belongs_to :category
   has_many :order_items, dependent: :destroy
   has_many :images, as: :imageable, dependent: :destroy
   has_many :reviews

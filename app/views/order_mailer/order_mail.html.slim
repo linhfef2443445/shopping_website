@@ -1,0 +1,7 @@
+h1
+  | #{t(".hello")} #{@user.name}
+span 
+  h5 
+    | You have successfully payment
+p
+  = link_to "Order detail", orders_url(@order)

@@ -30,21 +30,21 @@ class Order < ApplicationRecord
     self[:status] = :Ordered
   end
 
-    def make_charge
-    charge = Stripe::Charge.create({
-      # Total Amount user will be charged (in cents)
-      amount: (total * 100).to_i,
-      # Currency of charge
-      currency: 'USD',
-      # the applicant users Stripe Customer ID
-      # expect format of "cus_0xxXxXXX0XXxX0"
-      customer: user.stripe_customer_id,
-      # Description of charge
-      description: description,
-      # Final Destination of charge (host standalone account)
-      # Expect format of acct_00X0XXXXXxxX0xX
-      }
-    )
+  def make_charge
+  charge = Stripe::Charge.create({
+    # Total Amount user will be charged (in cents)
+    amount: (total * 100).to_i,
+    # Currency of charge
+    currency: 'USD',
+    # the applicant users Stripe Customer ID
+    # expect format of "cus_0xxXxXXX0XXxX0"
+    customer: user.stripe_customer_id,
+    # Description of charge
+    description: description,
+    # Final Destination of charge (host standalone account)
+    # Expect format of acct_00X0XXXXXxxX0xX
+    }
+  )
   # if the charge is successful, we'll receive a response in the charge object
   # We can then query that object via charge.paid
   # if true we can update our attribute

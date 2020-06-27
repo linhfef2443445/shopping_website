@@ -3878,7 +3878,7 @@ a:hover, a:active {
   text-align: center;
   width: 35px;
   height: 35px;
-  background: #2a313e;
+  background: rgb(247, 247, 247) !important;
   display: inline-block;
   float: left;
   margin-right: 10px;
@@ -3886,7 +3886,7 @@ a:hover, a:active {
 }
 .tyche-icon-box .icon span {
   font-size: 18px;
-  color: #FFF;
+  color: white;
   line-height: 35px;
 }
 .tyche-icon-box .text {
@@ -4227,15 +4227,7 @@ a:hover, a:active {
   transition: background 250ms cubic-bezier(0.075, 0.82, 0.165, 1) 0s;
   background: #313239;
 }
-.top-header-bar-container .top-header-bar li.top-search #search-top-bar-submit {
-  border: none;
-  background: #25262b;
-  padding: 0 10px;
-  height: 30px;
-  position: relative;
-  left: -5px;
-  font-size: 15px;
-}
+
 .top-header-bar-container .top-header-bar li.top-cart {
   padding-left: 5px !important;
   padding-right: 5px !important;

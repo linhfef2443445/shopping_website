@@ -14,13 +14,16 @@ module Manager
     def new
       @product = Product.new
       @image = @product.images.build
+      @categories = Category.all
     end
 
     def create
       @product = Product.new product_params.merge(admin_id: current_admin.id)
       if @product.save
-        params[:product][:images].each do |image|
-          @product.images.create file: image
+        if params[:product][:images] != nil 
+          params[:product][:images].each do |image|
+            @product.images.create file: image
+          end
         end
         flash[:success] = "Product was successfully created."
         redirect_to manager_products_path
@@ -30,7 +33,9 @@ module Manager
       end
     end
 
-    def edit; end
+    def edit
+      @categories = Category.all
+    end
 
     def update
       if @product.update product_params
@@ -63,7 +68,7 @@ module Manager
     end
 
     def product_params
-      params.require(:product).permit(:name, :description, :price, :quantity,
+      params.require(:product).permit(:name, :description, :price, :quantity, :category_id, 
                                       images_attributes: %i[file product_id id])
     end
   end

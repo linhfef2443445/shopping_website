@@ -32,6 +32,11 @@
                             | Quantity
                           = f.number_field :quantity, id: "form-control-name", class: "form-control"
                         .form-group.mb-3
+                          label for="name"
+                          .field.box-select
+                            | Category
+                          = f.select(:category_id, @categories.pluck(:name, :id), include_blank: t(".select"))
+                        .form-group.mb-3
                           = f.submit "Add Product Now", id: "btn-product", remote: true, class: "btn btn-primary btn-block buton text-uppercase form-control"
                   .col-xl-6.col-lg-6.col-md-12.mx-auto.mb-4
                     = f.fields_for :images do |p| 

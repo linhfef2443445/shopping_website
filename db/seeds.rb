@@ -18,6 +18,11 @@ user = User.create!(user_name: "NinhPham",
                     address: "Thai Binh"
                     )
 
+admin = Admin.first
+category_name  = Faker::Name.name
+Category.create!(name: category_name,
+                 admin: admin )
+
 100.times do |n|
   user_name  = Faker::Name.name
   email = "ex-#{n+1}@gmail.com"
@@ -37,11 +42,14 @@ end
   price = Faker::Number.between(from: 10, to: 200)
   description = Faker::Lorem.sentence(word_count: 10)
   admin = Admin.first
+  category = Category.first
   Product.create!(name:  lname,
                   quantity: quantity,
                   price: price,
+                  category: category,
                   description: description,
-                  admin: admin)
+                  admin: admin
+                  )
 end
 
 50.times do |n|

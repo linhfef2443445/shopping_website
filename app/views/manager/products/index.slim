@@ -23,8 +23,8 @@
                       | Description
                     th.sorting[style="width: 30px;"]
                       | Price
-                    th.sorting[style="width: 20px;"]
-                      | Quantity
+                    th.sorting[style="width: 40px;"]
+                      | Category
                     th.sorting[style="width: 40px;"]
                       | Image
                     th.sorting[style="width: 40px;"]
@@ -33,4 +33,3 @@
                   = render @products          
             .col-sm-12.col-md-7
               #dataTable_paginate.dataTables_paginate.paging_simple_numbers
-                = paginate @products

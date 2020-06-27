@@ -17,7 +17,9 @@ class CartsController < ApplicationController
   end
 
   def update
-    @cart.data[params[:product][:product_id]] = params[:product][:quantity].to_i
+    array = @cart.data[params[:product][:product_id]]
+    array[0] = params[:product][:quantity].to_i
+    array[1] = params[:product][:size].split(",").map(&:to_i)
   end
 
   private

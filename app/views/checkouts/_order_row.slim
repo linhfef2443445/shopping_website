@@ -3,8 +3,16 @@ tr.cart_item
     = product.name
     |  
     strong.product-quantity
-      | × #{cart.data[product.id.to_s]}
+      | × #{cart.data[product.id.to_s].first}
+  td.product-name
+    - if cart.data[product.id.to_s].second.size > 0 && cart.data[product.id.to_s].second.size < 4 
+      - cart.data[product.id.to_s].second.each do |n|
+        strong.product-quantity
+          | #{OrderItem.sizes.key(n)}. 
+    - else
+        strong.product-quantity
+          | #{OrderItem.sizes.key(cart.data[product.id.to_s].second)}. 
   td.product-total
     span.woocommerce-Price-amount.amount
       span.woocommerce-Price-currencySymbol $
-      = product.price * cart.data[product.id.to_s]
+      = product.price * cart.data[product.id.to_s].first

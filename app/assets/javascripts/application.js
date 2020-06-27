@@ -23,3 +23,6 @@
 //= require lib/jquery.raty
 //= require lib/rate.min
 //= require custom
+//= require dropdown
+//= require cart
+//= require map

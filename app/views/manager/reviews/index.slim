@@ -5,7 +5,7 @@
         | All Review
 row
   .col-sm-12
-    table.table.table-striped
+    table#dataTable.table.table-bordered.dataTable[ style="width: 100%;"]
       thead
         tr[role="row"]
           th.sorting_asc[style="width: 40px;"]
@@ -22,4 +22,3 @@ row
         = render @reviews
   .col-sm-12.col-md-7
     #dataTable_paginate.dataTables_paginate.paging_simple_numbers
-      = paginate @reviews

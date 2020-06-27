@@ -28,9 +28,6 @@ body
             li.top-search
               = search_form_for(@search, url: shop_path) do |f|
                 label
-                  .search-field-top-bar
                     = f.search_field :name_cont, placeholder:"Search ..."
-                    = button_tag(type: 'submit', class: "search-top-bar-submit", id: 'search-top-bar-submit') do
-                      span.fa.fa-search
-
-                    
+                    = button_tag(type: 'submit', class: "search-bt") do
+                      span.fa.fa-search              

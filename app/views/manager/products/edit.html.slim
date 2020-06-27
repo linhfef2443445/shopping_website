@@ -27,9 +27,9 @@ body
                           | Price
                         = f.number_field :price, id: "form-control-name", class: "form-control"
                       .form-group.mb-3
-                        label for="name" 
-                          | Quantity
-                        = f.number_field :quantity, id: "form-control-name", class: "form-control"
+                        label for="name"
+                          | Category
+                        = f.select(:category_id, @categories.pluck(:name, :id), include_blank: t(".select"))
                       .form-group.mb-3
                         label for="name" 
                           | Add new images

@@ -7,9 +7,33 @@
     },
 
     initNumberFields: function() {
-      var inputs = $( '.quantity > input.qty ' );
+
+      var inputs = $( '.quantity' );
       $.each( inputs, function() {
         $( this ).wrap( '<div class="styled-number"></div>' );
+        $( this ).
+            parent().
+            append(
+                '<a href="#" class="arrow-up incrementor"  data-increment="up"><span class="dashicons dashicons-plus"></span></a>' );
+        $( this ).
+            parent().
+            prepend(
+                '<a href="#" class="arrow-down incrementor" data-increment="down"><span class="dashicons dashicons-minus"></span></a>' );
+      } );
+
+      /**
+       * Add/subtract from the input type number fields
+       */
+      $( '.incrementor' ).on( 'click', function( e ) {
+        e.preventDefault();
+        Tyche._calcValue( $( this ) );
+      } );
+    },
+
+    initSelectFields: function() {
+      var inputs = $( '.size' );
+      $.each( inputs, function() {
+        $( this ).wrap( '<div class="styled1-number"></div>' );
         $( this ).
             parent().
             append(
@@ -265,6 +289,7 @@
     Tyche.showHideMobileMenu();
     Tyche.initStyleSelects();
     Tyche.initNumberFields();
+    Tyche.initSelectFields();
     Tyche.initAdsenseLoader();
     Tyche.updateCartTotals();
   } );

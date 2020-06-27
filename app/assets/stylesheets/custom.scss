@@ -531,3 +531,20 @@ input#blog_description {
   text-align: center;
   vertical-align: middle;
 }
+
+#map {
+  width: 600px;
+  height: 400px;
+}
+
+.search-bt {
+  border: none !important;
+  background: #25262b !important;
+  padding: 0 10px !important;
+  height: 30px;
+  position: relative !important;
+  left: -5px !important;
+  font-size: 15px !important;
+  text-align: center;
+  float: none !important;
+}

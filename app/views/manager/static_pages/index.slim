@@ -1,0 +1,10 @@
+.container-fluid
+  .chart-index
+    h3 New user
+    = line_chart User.group_by_day(:created_at,last: 12).count 
+  .chart-index
+    h3 Total purchased
+    = column_chart Order.group_by_day(:created_at, last: 12).sum("orders.subtotal") 
+  .chart-index
+    h3 New Review
+    = line_chart Review.group_by_week(:created_at, last: 12).count 

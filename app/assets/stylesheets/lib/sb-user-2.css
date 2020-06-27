@@ -4430,7 +4430,7 @@ a:active {
     text-align: center;
     width: 35px;
     height: 35px;
-    background: #2a313e;
+    background: white;
     display: inline-block;
     float: left;
     margin-right: 10px;
@@ -4439,7 +4439,7 @@ a:active {
 
 .tyche-icon-box .icon span {
     font-size: 18px;
-    color: #FFF;
+    color: white;
     line-height: 35px;
 }
 
@@ -7385,4 +7385,13 @@ object {
 
 .gallery-caption {
     display: block;
+}
+
+select#size {
+  width: 200px;
+}
+
+select#quantity {
+  width: 40px;
+  color: black;
 }
