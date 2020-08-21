@@ -6,8 +6,8 @@ class CheckoutsController < ApplicationController
 
   def create
     @order = current_user.orders.build(checkout_params)
-    cart.data.each do |product_id, att|
-      @order.order_items.build(product_id: product_id, quantity: att.first)
+    cart.data.values.each do |product|
+      @order.order_items.build(product_id: product.keys.first.to_i, quantity: product.values.first.second, size: product.values.first.first)
     end
     if @order.save
       flash[:success] = "Order created complete!"
@@ -19,7 +19,16 @@ class CheckoutsController < ApplicationController
   end
 
   def new
-    @products = Product.where(id: @cart.data.keys)
+    array = @cart.data.values.map {|n| n.first}
+    i = 0
+    stt = @cart.data.keys[i].to_i
+    lists = []
+    array.each do |n|
+      lists[i] = [Product.find_by(id: n),stt]
+      i += 1
+      stt += 1
+    end
+    @products = lists
     @order = current_user.orders.new
   end
 

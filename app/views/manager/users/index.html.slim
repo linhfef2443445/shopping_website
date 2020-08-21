@@ -23,7 +23,9 @@
                       | Phone Number
                     th.sorting[style="width: 15%;"]
                       | Address
-                tbody
+                    th.sorting[style="width: 70px;"]
+                      | Action
+                tbody#users
                   = render @users
           .col-sm-12.col-md-7
             #dataTable_paginate.dataTables_paginate.paging_simple_numbers

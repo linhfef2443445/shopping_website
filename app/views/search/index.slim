@@ -1,0 +1,6 @@
+.container
+  .row
+    .content-area.col-md-8#primarry
+      .main.site-main#main
+        =render partial: "item", collection: @result, as: :item
+  = paginate @result

@@ -1,2 +1,6 @@
-$(".cart-text").html("<%= escape_javascript(render 'layouts/cart_text') %>")
+<%if @sttafter == nil%>
+  toastr["error"]("You already has this item in your cart");
+<%else%>
+  $(".cart-text").html("<%= escape_javascript(render 'layouts/cart_text') %>")
   toastr["success"]("Added product to cart!");
+<%end%>  

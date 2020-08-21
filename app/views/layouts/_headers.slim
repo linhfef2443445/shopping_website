@@ -9,11 +9,18 @@ header#masthead.site-header[role="banner"]
       .row
         .col-md-12
           ul#desktop-menu.sf-menu
-            li#menu-item-86.menu-item.menu-item-type-post_type.menu-item-object-page.menu-item-86
+            li
               = link_to "Home", root_path, class: current_class(root_path)
-            li#menu-item-86.menu-item.menu-item-type-post_type.menu-item-object-page.menu-item-86
+            li
+             .dropdown
+                a.dropbutn style="background: rgb(37, 38, 44) !important; border-color: rgb(37, 38, 44); padding-right: 25px;" data-toggle="dropdown" 
+                  | Category
+                .dropdown-content
+                  #cate
+                    = render partial: "layouts/category", collection: @categories, as: :category
+            li
               = link_to "Shop", shop_path, class: current_class(shop_path)
-            li#menu-item-84.menu-item.menu-item-type-post_type.menu-item-object-page.menu-item-84
+            li
               = link_to "Blog", blogs_path, class: current_class(blogs_path)
-            li#menu-item-85.menu-item.menu-item-type-post_type.menu-item-object-page.menu-item-85
+            li
               = link_to "Contact", contacts_path, class: current_class(contacts_path)

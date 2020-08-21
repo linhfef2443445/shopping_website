@@ -1,0 +1,71 @@
+function my_change_size_event(){
+  $('.product-s-cart').change(function() {
+    $.ajax({
+      type: 'PATCH',
+      url: '/carts/'+ $(this).data("id"),
+      data: { "stt": $(this).data("id"),
+              "product_id": $(this).data("product-id"),
+              "size": $(this).val() },
+      success:function(data){
+        my_change_size_event();
+        my_change_qty_event();
+      },
+      error:function(){
+        $('#ajax_response').html('<p class="error"><strong>Oops!</strong> Try that again in a few moments.</p>');
+      }
+    });
+  }); 
+}
+
+function my_change_qty_event(){
+  $('.product-q-cart').change(function() {
+    $.ajax({
+      type: 'PATCH',
+      url: '/carts/'+ $(this).data("id"),
+      data: { "stt": $(this).data("id"),
+              "product_id": $(this).data("product-id"),
+              "quantity": $(this).val() },
+      success:function(data){
+        my_change_qty_event();
+        my_change_size_event();
+      },
+      error:function(){
+        $('#ajax_response').html('<p class="error"><strong>Oops!</strong> Try that again in a few moments.</p>');
+      }
+    });
+  }); 
+}
+
+$(document).ready(function () {
+  $('.product-s-cart').change(function() {
+    $.ajax({
+      type: 'PATCH',
+      url: '/carts/'+ $(this).data("id"),
+      data: { "stt": $(this).data("id"),
+              "product_id": $(this).data("product-id"),
+              "size": $(this).val() },
+      success:function(data){
+        my_change_size_event();
+      },
+      error:function(){
+        $('#ajax_response').html('<p class="error"><strong>Oops!</strong> Try that again in a few moments.</p>');
+      }
+    });
+  }); 
+
+  $('.product-q-cart').change(function() {
+    $.ajax({
+      type: 'PATCH',
+      url: '/carts/'+ $(this).data("id"),
+      data: { "stt": $(this).data("id"),
+              "product_id": $(this).data("product-id"),
+              "quantity": $(this).val() },
+      success:function(data){
+        my_change_qty_event();
+      },
+      error:function(){
+        $('#ajax_response').html('<p class="error"><strong>Oops!</strong> Try that again in a few moments.</p>');
+      }
+    });
+  });
+});

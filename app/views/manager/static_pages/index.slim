@@ -1,10 +1,20 @@
-.container-fluid
-  .chart-index
-    h3 New user
-    = line_chart User.group_by_day(:created_at,last: 12).count 
-  .chart-index
-    h3 Total purchased
-    = column_chart Order.group_by_day(:created_at, last: 12).sum("orders.subtotal") 
-  .chart-index
-    h3 New Review
-    = line_chart Review.group_by_week(:created_at, last: 12).count 
+= content_for :head do 
+  = stylesheet_link_tag    "lib/templatemo-style.css", media: "all"
+body
+  .container.tm-mt-big.tm-mb-big
+    .d-sm-flex.align-items-center.justify-content-between.mb-4
+      h1.mb-0.text-gray-800 Dashbroad
+    .row
+      .col-md-12
+        .tm-bg-primary-dark.tm-block.tm-block-h-auto
+          .row.tm-edit-product-row
+            .container-fluid
+              .chart-index
+                h3 New user
+                = line_chart User.group_by_day(:created_at,last: 12).count 
+              .chart-index
+                h3 Total purchased
+                = column_chart Order.group_by_day(:created_at, last: 12).sum("orders.subtotal") 
+              .chart-index
+                h3 New Review
+                = line_chart Review.group_by_week(:created_at, last: 12).count 

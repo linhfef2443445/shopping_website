@@ -18,4 +18,8 @@ class User < ApplicationRecord
   def welcome_send
     HardWorker.perform_async(self.id)
   end
+
+  def active_for_authentication?
+    super && !deactivated
+  end
 end

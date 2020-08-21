@@ -1,4 +1,4 @@
-- provide(:title, "Shop")
+- provide(:title, "Category")
 div.archive.post-type-archive.post-type-archive-product.wp-custom-logo.woocommerce.woocommerce-page.woocommerce-js.hfeed
   .container
     .row
@@ -20,6 +20,9 @@ div.archive.post-type-archive.post-type-archive-product.wp-custom-logo.woocommer
           | Shop
         .woocommerce-notices-wrapper
         ul.products.columns-3
-          = render @products
+          - if @products.nil?
+            | Sorry no product in this category
+          - else
+            = render @products
           .col-md-12 style="text-align: center"
             = paginate @products

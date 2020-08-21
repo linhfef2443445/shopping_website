@@ -2,8 +2,7 @@
   = stylesheet_link_tag    "lib/templatemo-style.css", media: "all"
 body
   .container.tm-mt-big.tm-mb-big
-    .d-sm-flex.align-items-center.justify-content-between.mb-4
-      h1.mb-0.text-gray-800 Edit Product
+    h1.mb-0.text-gray-800 Edit Product
     .row
       .col-md-12
         .tm-bg-primary-dark.tm-block.tm-block-h-auto
@@ -21,7 +20,7 @@ body
                       .form-group.mb-3
                         label for="name" 
                           | Description
-                        = f.text_area :description, id: "form-control-name", class: "form-control"
+                        = f.cktext_area :description, rows: 10, id: "cke_chrome", class: "form-control"
                       .form-group.mb-3
                         label for="name" 
                           | Price
@@ -41,10 +40,10 @@ body
                       .form-group.mb-3
                         = f.submit "Update Product Now",id: "btn-product", class: "btn btn-primary btn-block text-uppercase form-control"
                 .col-xl-6.col-lg-6.col-md-12.mx-auto.mb-4
-                  #preview-change
                   = f.fields_for :images do |p| 
                     .image-upload#photo-name
-                      = image_tag p.object.file_url, class:"image-center"
+                      #preview-change
+                        = image_tag p.object.file_url, class:"image-center"
                       = p.hidden_field :id
                       = p.hidden_field :file_cache, id: "photo-name"
                       br

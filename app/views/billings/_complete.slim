@@ -14,6 +14,11 @@
         td
           strong
             span.woocommerce-Price-amount.amount= number_to_currency order.subtotal
-  span If you agree to pay this order, press the pay button to pay
-  = form_tag payment_path(order_id: @order.id), method: :post do
-    = submit_tag "Pay", class: "btn btn-primary", id:"success-payment"
+  .row
+    .col-md-12.mt-5.text-center
+      .col-md-6.text-right
+        = form_tag payment_path(order_id: @order.id), method: :post do
+          = submit_tag "Pay now", class: "btn btn-primary", id:"success-payment"
+      .col-md-6.text-left
+        = link_to orders_path, class: "btn btn-success", style:"margin-right: 10px", id:"paybtn" do
+          span style="color: #ffffff" Pay later

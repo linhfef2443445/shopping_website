@@ -25,4 +25,5 @@
 //= require custom
 //= require dropdown
 //= require cart
+//= require update_cart
 //= require map

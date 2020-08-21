@@ -2,7 +2,7 @@ tr
   td
     = product.name
   td
-    = product.description
+    = raw(product.description.truncate_words(10))
   td
     = number_to_currency(product.price)
   td

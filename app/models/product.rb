@@ -12,7 +12,6 @@ class Product < ApplicationRecord
 
   validates :name, presence: true
   validates :price, presence: true
-  validates :quantity, presence: true, numericality: { greater_than_or_equal_to: 1, only_integer: true }
   accepts_nested_attributes_for :images
 
   scope :order_by_avg_rating, lambda {

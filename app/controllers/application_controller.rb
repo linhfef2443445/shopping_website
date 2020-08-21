@@ -7,6 +7,7 @@ class ApplicationController < ActionController::Base
   helper_method :cart
   before_action :store_user_location!, if: :storable_location?
   before_action :search
+  before_action :set_categories
 
   def cart
     @cart ||= Cart.new(session[:cart])
@@ -35,5 +36,9 @@ class ApplicationController < ActionController::Base
 
   def store_user_location!
     store_location_for(:user, request.fullpath)
+  end
+
+  def set_categories
+    @categories = Category.all
   end
 end

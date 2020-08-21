@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_16_092556) do
+ActiveRecord::Schema.define(version: 2020_07_22_062101) do
 
   create_table "admins", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -88,6 +88,7 @@ ActiveRecord::Schema.define(version: 2020_06_16_092556) do
     t.bigint "product_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "size"
     t.index ["order_id"], name: "index_order_items_on_order_id"
     t.index ["product_id"], name: "index_order_items_on_product_id"
   end
@@ -100,21 +101,19 @@ ActiveRecord::Schema.define(version: 2020_06_16_092556) do
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.decimal "subtotal", precision: 10
+    t.decimal "subtotal", precision: 15, scale: 10
     t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
   create_table "products", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
-    t.decimal "price", precision: 10
-    t.integer "quantity"
+    t.decimal "price", precision: 15, scale: 10
     t.text "description"
     t.bigint "admin_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "slug"
     t.bigint "category_id"
-    t.integer "size"
     t.index ["admin_id"], name: "index_products_on_admin_id"
     t.index ["category_id"], name: "index_products_on_category_id"
     t.index ["slug"], name: "index_products_on_slug", unique: true
@@ -144,6 +143,7 @@ ActiveRecord::Schema.define(version: 2020_06_16_092556) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "stripe_id"
+    t.boolean "deactivated", default: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

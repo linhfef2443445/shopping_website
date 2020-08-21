@@ -15,11 +15,11 @@
                   th.product-remove[style="width: 50px;"]
                   th.product-name Image
                   th.product-name Product
+                  th.product-quantity[style="width: 100px;"] Quantity
+                  th.product-quantity[style="width: 100px;"] Size
                   th.product-price Price
                   th.product-subtotal Subtotal
-                  th.product-quantity[style="width: 100px;"] Quantity
-                  th.product-quantity[style="width: 200px;"] Size
-                  th.product-subtotal Update
+                  /th.product-subtotal Update
               tbody
                 = render partial: "cart_row" , collection: product_list, as: :product
             .cart-collaterals

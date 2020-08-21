@@ -3,6 +3,7 @@
     h1.mb-0.text-gray-800 Add Blog
   .col-md-16
     = form_for [:manager, @blog] do |f|
+      = render "users/shared/error_messages", object: f.object
       = f.label :title
       = f.text_field :title
       = f.label :description

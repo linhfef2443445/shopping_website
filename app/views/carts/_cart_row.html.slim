@@ -1,30 +1,30 @@
 tr.woocommerce-cart-form__cart-item.cart_item
   td.product-remove
-    = link_to "×", cart_path(product.id), { data: { confirm: "Are you sure you wish to delete the product '#{product.name}' from your cart?" }, method: :delete, remote: true, class: "remove" }
+    = link_to "×", cart_path(product.second), { data: { confirm: "Are you sure you wish to delete the product '#{product.first.name}' from your cart?" }, method: :delete, remote: true, class: "remove" }
   td.product-thumbnail
     = link_to ""
-    = image_tag (product.images.first.file_url if product.images.presence) || "/assets/user1.jpg"
+    = image_tag (product.first.images.first.file_url if product.first.images.presence) || "/assets/user1.jpg"
   td.product-name data-title="Product" 
-    = link_to "#{product.name}", product
-  td.product-price data-title="Price" 
-    span.woocommerce-Price-amount.amount
-      span.woocommerce-Price-currencySymbol $
-      = product.price
-  td.product-subtotal data-title="Total" 
-    span.woocommerce-Price-amount.amount
-      = number_to_currency product.price * cart.data[product.id.to_s].first
+    = link_to "#{product.first.name}", product.first
   td.product-quantity data-title="Quantity" 
     .quantity
       .styled-number
-        = select_tag :quantity, options_for_select(0..11, cart.data[product.id.to_s].first), class: "form-control product-quantity", data: {product_id: product.id}
+        = select_tag :quantity, options_for_select(1..10, cart.find_product(product.second).values.first.second),remote: true , class: "product-quantity product-q-cart", data: {product_id: product.first.id, id: product.second}
   td.product-size data-title="Size" 
     .size
       .styled1-number
         .multiple
-          = select_tag :size, options_for_select(OrderItem.sizes, cart.data[product.id.to_s].second), class: "product-size ui fluid selection dropdown", data: {product_id: product.id}
-  td
-    = form_for product, url: cart_path(product.id), method: :patch, remote: true do |f|
-      = f.hidden_field :product_id, value: product.id
-      = f.hidden_field :quantity, value: cart.data[product.id.to_s].first, id: "product-quantity-hidden-#{product.id}", min: 1
-      = f.hidden_field :size, value: cart.data[product.id.to_s].second, id: "product-size-hidden-#{product.id}"
-      = f.submit "Update", class: "remove"
+         = select_tag :size, options_for_select(OrderItem.sizes, cart.find_product(product.second).values.first.first),remote: true , class: "product-size product-s-cart", data: {product_id: product.first.id, id: product.second}
+  td.product-price data-title="Price" 
+    span.woocommerce-Price-amount.amount
+      span.woocommerce-Price-currencySymbol $
+      = product.first.price
+  td.product-subtotal data-title="Total" 
+    span.woocommerce-Price-amount.amount
+      = number_to_currency product.first.price * cart.find_product(product.second).values.first.second
+  / td
+  /   = form_for product.first, url: cart_path(product.second), method: :patch, remote: true do |f|
+  /     = f.hidden_field :product_id, value: product.first.id
+  /     = f.hidden_field :quantity, value: cart.find_product(product.second).values.first.second, id: "product-quantity-hidden-#{product.first.id}", min: 1
+  /     = f.hidden_field :size, value: cart.find_product(product.second).values.first.first, id: "product-size-hidden-#{product.first.id}"
+  /     = f.submit "Update", class: "remove"

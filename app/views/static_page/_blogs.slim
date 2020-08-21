@@ -1,0 +1,21 @@
+.tyche-recent-post-alternate-widget
+  .tyche-meta
+    .tyche-date
+      span.day = blog.created_at.strftime("%d")
+      span.month = blog.created_at.strftime("%b")
+    .tyche-image
+      #blog_i
+        = link_to (blog if blog.image.presence) || "/assets/user1.jpg", {class: "blog_thumb_2"}
+          = image_tag (blog.image.url(:blog_thumb) if blog.image.presence) || "/assets/user1.jpg", alt: "Photo", class: "attachment-shop_catalog.size-shop_catalog"
+  .tyche-post-content
+    p
+      a 
+        = link_to blog.title.truncate_words(7), blog
+    ul.meta-list
+      li.post-author
+        icon.fa.fa-user
+        | #{blog.admin.user_name}
+      li.post-comments
+        span.sep /
+        icon.fa.fa-comments
+        | #{blog.comments.count} Comments

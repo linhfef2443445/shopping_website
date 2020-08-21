@@ -4,7 +4,7 @@ tr
   td
     = blog.description
   td 
-    = raw blog.content
+    = raw blog.content.truncate_words(50)
   td 
     = image_tag (blog.image.url if blog.image.presence) || "/assets/user.png", size: "50", alt: "Edit Entry"
   td#edit-blog

@@ -35,6 +35,7 @@ Rails.application.routes.draw do
   get "/success" => "billings#success", as: :success
   post "/payment" => "billings#payment", as: :payment
   post "/pay_order" => "orders#payment_from_order", as: :payment_order
+  get "/search", to: "search#index"
   
   resources :products, only: [:show]
   resources :reviews, only: %i[create new show index]

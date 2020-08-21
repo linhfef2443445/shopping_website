@@ -17,65 +17,66 @@ user = User.create!(user_name: "NinhPham",
                     phone_number: "0964980884",
                     address: "Thai Binh"
                     )
+# admin = Admin.first
+# 10.times do |n|
+#   category_name  = Faker::Name.unique.name
+#   Category.create!(name: category_name,
+#                  admin: admin )
+# end
 
-admin = Admin.first
-category_name  = Faker::Name.name
-Category.create!(name: category_name,
-                 admin: admin )
+# 100.times do |n|
+#   user_name  = Faker::Name.unique.name
+#   email = "ex-#{n+1}@gmail.com"
+#   password = "123456"
+#   User.create!(user_name: user_name,
+#                 email: email,
+#                 password: password,
+#                 full_name: "Georgio Armani",
+#                 phone_number: "0964980884",
+#                 address: "Thai Binh"
+#                )
+# end
 
-100.times do |n|
-  user_name  = Faker::Name.name
-  email = "ex-#{n+1}@gmail.com"
-  password = "123456"
-  User.create!(user_name: user_name,
-                email: email,
-                password: password,
-                full_name: "Georgio Armani",
-                phone_number: "0964980884",
-                address: "Thai Binh"
-               )
-end
+# 15.times do |n|
+#   lname  = Faker::Name.name
+#   quantity = Faker::Number.between(from: 1, to: 10)
+#   price = Faker::Number.between(from: 10, to: 200)
+#   description = Faker::Lorem.sentence(word_count: 10)
+#   admin = Admin.first
+#   category = Category.first
+#   Product.create!(name:  lname,
+#                   quantity: quantity,
+#                   price: price,
+#                   category: category,
+#                   description: description,
+#                   admin: admin
+#                   )
+# end
 
-15.times do |n|
-  lname  = Faker::Name.name
-  quantity = Faker::Number.between(from: 1, to: 10)
-  price = Faker::Number.between(from: 10, to: 200)
-  description = Faker::Lorem.sentence(word_count: 10)
-  admin = Admin.first
-  category = Category.first
-  Product.create!(name:  lname,
-                  quantity: quantity,
-                  price: price,
-                  category: category,
-                  description: description,
-                  admin: admin
-                  )
-end
+# 50.times do |n|
+#   user = User.all.to_a.sample
+#   full_name = User.pluck(:full_name).to_a.sample
+#   address = Faker::Address.street_address
+#   phone_number = Faker::PhoneNumber.phone_number
+#   status = 0
+#   Order.create!(user: user,
+#                full_name: full_name,
+#                address: address,
+#                phone_number:  phone_number,
+#                status: status)
+# end 
 
-50.times do |n|
-  user = User.all.to_a.sample
-  full_name = User.pluck(:full_name).to_a.sample
-  address = Faker::Address.street_address
-  phone_number = Faker::PhoneNumber.phone_number
-  status = 0
-  Order.create!(user: user,
-               full_name: full_name,
-               address: address,
-               phone_number:  phone_number,
-               status: status)
-end 
+# orders = Order.order(:created_at).take(6)
+# 5.times do |n|
+#   quantity = Faker::Number.between(from: 1, to: 10)
+#   productid = Faker::Number.between(from: 1, to: 15)
+#   orders.each { |order| order.order_items.create!(quantity: quantity, product_id: productid) } 
+# end
 
-orders = Order.order(:created_at).take(6)
-5.times do |n|
-  quantity = Faker::Number.between(from: 1, to: 10)
-  productid = Faker::Number.between(from: 1, to: 15)
-  orders.each { |order| order.order_items.create!(quantity: quantity, product_id: productid) } 
-end
-
-admins = Admin.all
-30.times do |n|
-  title = Faker::Lorem.sentence(word_count:10)
-  content = Faker::Lorem.sentence(word_count:100)
-  description = Faker::Lorem.sentence(word_count: 10)
-  admins.each {|admin| admin.blogs.create!(title: title, content: content, description: description)}
-end
+# admins = Admin.all
+# 30.times do |n|
+#   title = Faker::Lorem.sentence(word_count:10)
+#   content = Faker::Lorem.sentence(word_count:100)
+#   description = Faker::Lorem.sentence(word_count: 10)
+#   admins.each {|admin| admin.blogs.create!(title: title, content: content, description: description)}
+# end

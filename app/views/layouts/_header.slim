@@ -26,8 +26,8 @@ body
                   | &emsp;
                   = link_to "Signup", new_user_registration_path
             li.top-search
-              = search_form_for(@search, url: shop_path) do |f|
+              = form_tag search_path, method: :get
                 label
-                    = f.search_field :name_cont, placeholder:"Search ..."
+                    = text_field_tag :q, nil, placeholder:"Search ..."
                     = button_tag(type: 'submit', class: "search-bt") do
                       span.fa.fa-search              

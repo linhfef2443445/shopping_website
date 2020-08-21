@@ -52,7 +52,7 @@
 .tyche-product.primary{
   position: relative;
   width: 262px;
-  height: 482px;
+  height: 505px;
 } 
 
 .tyche-product-image{
@@ -353,6 +353,10 @@ li a.active {
   color : #25262b !important;
 }
 
+select#size{
+  color : #25262b !important;
+}
+
 .mfp-arrow{
   border-color: #f87a7a00 !important;
   background: #f87a7a00 !important;
@@ -547,4 +551,68 @@ input#blog_description {
   font-size: 15px !important;
   text-align: center;
   float: none !important;
+}
+
+a.dropbutn::after {
+  content: "" !important;
+}
+
+a.dropdown-item:hover{
+  color: black !important;
+}
+
+.dropdown-content {
+  z-index: 2;
+}
+
+.dropdown-content {
+  #cate{
+    height: 200px;
+    overflow: auto;
+  }
+}
+
+a#paybtn {
+  color: #fff !important;
+  background-color: #5cb85c !important;
+  border-color: #4cae4c !important;
+  padding-bottom: 8px !important;
+  padding-top: 9px !important;
+  padding-left: 23px !important;
+  padding-right: 26px !important;
+}
+
+.prd-des{
+   ul {
+      list-style-type: initial;
+      padding: 0;
+      margin-left: 20px;
+  } 
+}
+
+.classabc {
+    height: 36px;
+}
+
+.tyche-blog-post .entry-content {
+  margin-top: 0px !important;
+}
+
+.woocommerce ul.products li.product .woocommerce-loop-product__title {
+  height: 75px !important; 
+}
+
+.class-des{
+  table, th, td {
+    border: 1px solid #fff;
+  }
+}
+
+.tyche-image{
+  #blog_i{
+    height: 331px;
+    display: inline-block;
+    float: left;
+    overflow: hidden;
+  }
 }

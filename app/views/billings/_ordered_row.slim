@@ -3,7 +3,7 @@ tr.cart_item
     = item.product.name
     |  
     strong.product-quantity
-      | × #{item.quantity}
+      | × #{item.quantity} | Size: #{item.size}
   td.product-total
     span.woocommerce-Price-amount.amount
       span.woocommerce-Price-currencySymbol $

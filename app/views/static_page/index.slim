@@ -38,13 +38,24 @@ html lang="en-US"
                   .col-xs-12
                     .owl-carousel.tyche-product-slider data-attr-elements="4"
                       = render partial: "products" , collection: @top_products, as: :product 
+      section.content-area-4
+        .container
+          .row
+            .col-md-6.col-xs-12
+              #tyche_recent-3.tyche-recent-posts.widget.widget_tyche_recent
+                h3.widget-title
+                  span FROM THE BLOG
+                = render partial: "blogs", collection: @blog_1, as: :blog
+            .col-md-6.col-xs-12
+              #tyche_recent-4.tyche-recent-posts.no-title.widget.widget_tyche_recent
+                = render partial: "blogs", collection: @blog_2, as: :blog
       section.content-area-5
         .container
           .row
             .col-xs-12
               #tyche_products-10.tyche-products.light_blue.widget.widget_tyche_products
                 h3.widget-title
-                  span RANDOM PRODUCTS
+                  span ANOTHER PRODUCTS
                 .row.tyche-product-slider-container
                   .tyche-product-slider-navigation.hidden-xs
                     a.prev href="#" 

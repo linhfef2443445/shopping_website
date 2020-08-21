@@ -3,8 +3,7 @@
     = stylesheet_link_tag "lib/templatemo-style.css", media: "all"
   body
     .container.tm-mt-big.tm-mb-big
-      .d-sm-flex.align-items-center.justify-content-between.mb-4
-        h1.mb-0.text-gray-800 Add Product
+      h1.mb-0.text-gray-800 Add Product
       .row
         .col-md-12
           .tm-bg-primary-dark.tm-block.tm-block-h-auto
@@ -22,15 +21,12 @@
                         .form-group.mb-3
                           label for="name" 
                             | Description
-                          = f.text_area :description, id: "form-control-name", class: "form-control"
+                          /= f.cktext_area :content, rows: 10, id: "cke_chrome"
+                          = f.cktext_area :description, rows: 10, id: "cke_chrome", class: "form-control"
                         .form-group.mb-3
                           label for="name" 
                             | Price
-                          = f.number_field :price, id: "form-control-name", class: "form-control"
-                        .form-group.mb-3
-                          label for="name" 
-                            | Quantity
-                          = f.number_field :quantity, id: "form-control-name", class: "form-control"
+                          = f.number_field :price, id: "form-control-name", step: 0.01, class: "form-control"
                         .form-group.mb-3
                           label for="name"
                           .field.box-select

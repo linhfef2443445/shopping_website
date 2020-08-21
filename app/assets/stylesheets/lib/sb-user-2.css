@@ -2577,8 +2577,8 @@ textarea {
 
 .styled-select:after {
     position: absolute;
-    content: '\f107';
-    color: #F66249;
+    content: '';
+    color: white;
     top: 3px;
     right: 15px;
     font-family: 'FontAwesome';
@@ -3837,7 +3837,7 @@ a:active {
 .widget.widget_tyche_recent .tyche-recent-post-alternate-widget .tyche-image {
     float: left;
     display: inline-block;
-    height: 90px;
+    height: 331px;
     overflow: hidden;
 }
 
@@ -3851,7 +3851,7 @@ a:active {
 
 @media (min-width: 582px) {
     .widget.widget_tyche_recent .tyche-recent-post-alternate-widget .tyche-post-content {
-        width: 49%;
+        width: 100% !important;
         margin-top: 0;
         max-height: 90px;
         margin-left: 30px;
@@ -4363,7 +4363,7 @@ a:active {
 
 .tyche-blog-post .entry-content {
     margin: 0;
-    margin-top: 25px;
+    margin-top: 0px;
 }
 
 .tyche-blog-post .more-link {
@@ -7388,10 +7388,12 @@ object {
 }
 
 select#size {
-  width: 200px;
+  width: 30px;
+  background: white !important;
 }
 
 select#quantity {
-  width: 40px;
+  width: 30px;
   color: black;
+  background: white !important;
 }

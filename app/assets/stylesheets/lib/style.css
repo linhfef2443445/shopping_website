@@ -2340,15 +2340,17 @@ textarea {
   background: transparent;
 }
 .styled-select:after {
-  position: absolute;
-  content: '\f107';
-  color: #F66249;
-  top: 3px;
-  right: 15px;
-  font-family: 'FontAwesome';
-  font-size: 20px;
-  cursor: pointer;
-  z-index: -1;
+  position: relative !important;
+  margin: 0px !important;
+  content: "" !important;
+  color: black !important;
+  top: 0px !important;
+  right: 15px !important;
+  font-family: 'FontAwesome' !important;
+  font-size: 15px !important;
+  cursor: pointer !important;
+  z-index: 1 !important;
+  text-align: center !important;
 }
 
 /*--------------------------------------------------------------
@@ -3397,7 +3399,7 @@ a:hover, a:active {
 .widget.widget_tyche_recent .tyche-recent-post-alternate-widget .tyche-image {
   float: left;
   display: inline-block;
-  height: 90px;
+  height: 331px !important;
   overflow: hidden;
 }
 .widget.widget_tyche_recent .tyche-recent-post-alternate-widget .tyche-post-content {
@@ -3822,7 +3824,7 @@ a:hover, a:active {
 }
 .tyche-blog-post .entry-content {
   margin: 0;
-  margin-top: 25px;
+  margin-top: 0px;
 }
 .tyche-blog-post .more-link {
   background: #F66249;

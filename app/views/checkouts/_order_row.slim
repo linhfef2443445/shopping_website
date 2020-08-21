@@ -1,18 +1,13 @@
 tr.cart_item
   td.product-name
-    = product.name
+    = product.first.name
     |  
     strong.product-quantity
-      | × #{cart.data[product.id.to_s].first}
+      | × #{cart.find_product(product.second).values.first.second}
   td.product-name
-    - if cart.data[product.id.to_s].second.size > 0 && cart.data[product.id.to_s].second.size < 4 
-      - cart.data[product.id.to_s].second.each do |n|
-        strong.product-quantity
-          | #{OrderItem.sizes.key(n)}. 
-    - else
-        strong.product-quantity
-          | #{OrderItem.sizes.key(cart.data[product.id.to_s].second)}. 
+    strong.product-quantity
+      | #{OrderItem.sizes.key(cart.find_product(product.second).values.first.first)}
   td.product-total
     span.woocommerce-Price-amount.amount
       span.woocommerce-Price-currencySymbol $
-      = product.price * cart.data[product.id.to_s].first
+      = product.first.price * cart.find_product(product.second).values.first.second

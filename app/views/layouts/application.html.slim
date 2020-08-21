@@ -6,12 +6,11 @@ html
       = yield(:title)
       |  Linh Shop
     = csrf_meta_tags
-    = stylesheet_link_tag "application", media: "all"
+    = stylesheet_link_tag "application", media: "all" 
     = stylesheet_link_tag "https://colorlib.com/tyche/wp-content/plugins/woocommerce/assets/css/woocommerce-layout.css?ver=3.6.4", media: "all"
     = stylesheet_link_tag "https://colorlib.com/tyche/wp-content/plugins/woocommerce/assets/css/woocommerce.css?ver=3.6.4", media: "all" 
     = stylesheet_link_tag "//fonts.googleapis.com/css?family=Karla%3A400%2C700&amp;ver=5.2.1", media: "all"    
     = stylesheet_link_tag "https://colorlib.com/tyche/wp-content/themes/tyche/assets/css/style.css?ver=5.2.1", media: "all" 
-    = stylesheet_link_tag "https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.11.8/semantic.min.css" 
     = javascript_include_tag "https://checkout.stripe.com/checkout.js"
     = javascript_include_tag "application"
     = javascript_include_tag "https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.4/semantic.min.js", 'data-turbolinks-track' => true

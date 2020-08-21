@@ -16,6 +16,10 @@ class ImageLinkUploader < CarrierWave::Uploader::Base
   version :blog_thumb do
     process resize_to_fill: [730, 435]
   end
+
+  version :blog_thumb_2 do
+    resize_to_fill(160, 90)
+  end
   # Choose what kind of storage to use for this uploader:
   storage :file
   # storage :fog

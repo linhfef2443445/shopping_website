@@ -32,6 +32,7 @@ class BillingsController < ApplicationController
       #we're attaching the card to the stripe customer
       customer.save
       format.html { redirect_to success_path(order_id: params[:order_id]) }
+      flash[:success] = "Card access successful"
     end
   end
 
@@ -42,7 +43,7 @@ class BillingsController < ApplicationController
   def payment
     customer = Stripe::Customer.new current_user.stripe_id
     @payment = Stripe::Charge.create customer: customer.id,
-                                     amount: current_order.subtotal*100,
+                                     amount: (current_order.subtotal*100).to_i,
                                      description: "Payments",
                                      currency: "usd"
     if @payment.save

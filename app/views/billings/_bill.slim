@@ -2,13 +2,19 @@
     .row
       .col-md-12.mt-4.text-center
         h1 
-          Welcome
-          | &ensp;
-          = current_user.user_name
+          | Welcome 
+          = current_user.user_name   
     .row
-      h2.col-md-12.mt-5.text-center
+      h3.col-md-12.mt-5.text-center
         = "Access you payment card"
     .row
       .col-md-12.mt-4.text-center
         = form_tag create_payment_method_path, id: "billing-create-payment-method" do
           = link_to "Let's go", add_payment_method_path, remote: true, class: "btn btn-primary"
+    .row
+      .col-6.col-md-4
+      .col-6.col-md-4
+        .text-center
+          = image_tag "/assets/logo-stripe.png"
+          pre Stripe accepts all major debit and credit cards 
+             from customers in every country.

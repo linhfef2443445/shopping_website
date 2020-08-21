@@ -6,7 +6,7 @@ module Manager
     load_and_authorize_resource
 
     def index
-      @blogs = Blog.page(params[:page]).order(created_at: :desc)
+      @blogs = Blog.order(created_at: :desc)
     end
 
     def new
@@ -19,6 +19,7 @@ module Manager
         flash[:success] = "Blog was successfully created"
         redirect_to manager_blogs_path
       else
+        flash[:error] = "Something went wrong"
         render :new
       end
     end
@@ -26,7 +27,7 @@ module Manager
     def edit; end
 
     def update
-      if @blog.update blog.params
+      if @blog.update blog_params
         redirect_to manager_blogs_path, success: "Blog was updated!"
       else
         render :edit

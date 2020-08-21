@@ -2,11 +2,11 @@
 
 module Manager
   class ProductsController < Manager::BaseController
-    before_action :load_product, only: %i[edit update destroy]
+    before_action :load_product, only: %i[update destroy]
     load_and_authorize_resource
     
     def index
-      @products = Product.page(params[:page]).order(created_at: :desc)
+      @products = Product.order(created_at: :desc)
     end
 
     def show; end
@@ -45,9 +45,9 @@ module Manager
           end
         end
         flash[:success] = "Products updated"
-        redirect_to edit_manager_product_path
+        redirect_to manager_products_path
       else
-        render :edit
+        redirect_to manager_products_path
       end
     end
 

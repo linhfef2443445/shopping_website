@@ -11,7 +11,7 @@ module Manager
     end
 
     def create
-      @category = Category.new category_params
+      @category = Category.new category_params.merge(admin_id: current_admin.id)
       if @category.save
         flash[:success] = "Category was successfully created."
         redirect_to manager_categories_path

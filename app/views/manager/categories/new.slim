@@ -1,8 +1,15 @@
-.container.tm-mt-big.tm-mb-big
-  .d-sm-flex.align-items-center.justify-content-between.mb-4
-    h1.mb-0.text-gray-800 Create category
-  .col-md-16
-    = form_for [:manager, @category] do |f|
-      = f.label :name
-      = f.text_field :name
-      = f.submit "Create category", class: "btn btn-block btn-sm btn-success"
+= content_for :head do 
+  = stylesheet_link_tag    "lib/templatemo-style.css", media: "all"
+body
+  .container.tm-mt-big.tm-mb-big
+    h1.mb-0.text-gray-800 Create Category
+    .row
+      .col-md-6.offset-md-3
+        .tm-bg-primary-dark.tm-block.tm-block-h-auto
+          .row.tm-edit-product-row
+            .col-md-12
+              = form_for [:manager, @category] do |f|
+                = render "users/shared/error_messages", object: f.object
+                = f.label :name
+                = f.text_field :name
+                = f.submit "Create category", class: "btn btn-block btn-sm btn-success"

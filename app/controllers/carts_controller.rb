@@ -4,27 +4,63 @@ class CartsController < ApplicationController
   before_action :product_lists, only: %i[index update]
 
   def create
-    @cart.add_product(params[:product_id])
-    session[:cart] = @cart.data
-    @cart.cart_total
+    if @cart.size_present(params[:product_id], params[:size])
+      respond_to do |format|
+        format.js
+      end      
+    else
+      @sttafter = @cart.data.keys.last.to_i + 1
+      if params[:stt] == nil
+        @cart.add_product(@sttafter.to_s, params[:product_id], params[:size])
+      else
+        @cart.add_product(params[:stt], params[:product_id], params[:size])
+      end
+      session[:cart] = @cart.data
+      @cart.cart_total
+    end
   end
 
   def index; end
 
   def destroy
     @cart.data.delete(params[:id])
-    @product_lists = Product.where(id: @cart.data.keys)
+    n = 1
+    @cart.data.dup.each do |val|
+      @cart.data[n.to_s] = @cart.data.delete val.first
+      n += 1
+    end
+    array = @cart.data.values.map {|n| n.first}
+    i = 0
+    stt = @cart.data.keys[i].to_i
+    lists = []
+    array.each do |n|
+      lists[i] = [Product.find_by(id: n),stt]
+      i += 1
+      stt += 1
+    end
+    @product_lists = lists
   end
 
   def update
-    array = @cart.data[params[:product][:product_id]]
-    array[0] = params[:product][:quantity].to_i
-    array[1] = params[:product][:size].split(",").map(&:to_i)
+    if params[:quantity] == nil
+      @cart.data[params[:id]][params[:product_id]][0] = params[:size].to_i
+    else
+      @cart.data[params[:id]][params[:product_id]][1] = params[:quantity].to_i
+    end
   end
 
   private
 
   def product_lists
-    @product_lists = Product.where(id: @cart.data.keys)
+    array = @cart.data.values.map {|n| n.first}
+    i = 0
+    stt = @cart.data.keys[i].to_i
+    lists = []
+    array.each do |n|
+      lists[i] = [Product.find_by(id: n),stt]
+      i += 1
+      stt += 1
+    end
+    @product_lists = lists
   end
 end

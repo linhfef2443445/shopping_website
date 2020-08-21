@@ -25,20 +25,23 @@
                 h1.product_title
                   = @product.name
                 .woocommerce-product-details__short-description
-                  p
-                    = @product.description
+                  .prd-des
+                    p
+                      = raw(@product.description)
                 p.price
-                  span.woocommerce-Price-amount
-                    span.woocommerce-Price-currencySymbol $
-                    = @product.price
+                  span.woocommerce-Price-amount 
+                    | Price: 
+                    span.woocommerce-Price-currencySymbol
+                    | #{number_to_currency(@product.price)}
+                span.woocommerce-Price-amount Choose size:
                 = select_tag :size, options_for_select(Product.sizes), class: "product-size", :onchange => "myFunction(this)", data: {product_id: @product.id}
+                br
                 .product_meta
                   .posted_in
                   span Category: 
                   = link_to "#{@product.category.name}", category_path(@product.category.id)
                 h2
-                / = button_to "Add to cart", carts_path(product_id: @product.id), remote: true , class: "btn btn-danger action_link", id: "action_link"
-                = button_tag "Add to cart", remote: true , class: "btn btn-danger action_link", id: "action_link"
+                = button_tag "Add to cart", remote: true , class: "btn btn-danger action_link", id: "action_link", data: {id: @product.id, stt: @cart.data.size}
               .woocommerce-tabs
                 ul.tabs.wc-tabs 
                   li#tab-title-reviews aria-controls="tab-reviews" role="tab" 
@@ -56,6 +59,6 @@
                     #review-form
                       = render "reviews/form_review", review: @review
               section.related.products
-                h2 Related products
+                h2 Another products
                 ul.products.columns-4
                   = render partial: "another", collection: @another_products, as: :another_products

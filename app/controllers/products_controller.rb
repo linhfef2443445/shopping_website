@@ -12,7 +12,7 @@ class ProductsController < ApplicationController
 
   def show
     @product = Product.find(params[:id])
-    @another_products = Product.limit(::Settings.thumbs).find(Product.pluck(:id))
+    @another_products = Product.order("RAND()").limit(4)
     @thumbs = @product.images.all
     @reviews = @product.reviews.order("created_at asc")
     @review = @product.reviews.build
